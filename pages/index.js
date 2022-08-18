@@ -7,10 +7,9 @@ import BlogCard from '../components/BlogCard';
 
 import { GraphQLClient, gql } from 'graphql-request';
 import Footer from '../components/Footer';
+import ScrollToTop from '../components/ScrollToTop';
 
-const graphcms = new GraphQLClient(
-  'https://api-ap-northeast-1.hygraph.com/v2/ckwattc122q3g01w37o2ceapa/master'
-);
+const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
 
 const QUERY = gql`
   {
@@ -71,7 +70,7 @@ export default function Home({ posts }) {
         </div>
       </main>
 
-      {/* <ScrollToTop /> */}
+      <ScrollToTop />
       <Footer />
     </div>
   );
