@@ -7,14 +7,7 @@ function BlogPost({ title, coverPhoto, slug }) {
     <Link href={`/posts/${slug}`}>
       <a className='card'>
         <div className='img-card'>
-          <Image
-            src={coverPhoto.url}
-            alt=''
-            // width='100%'
-            // height='auto'
-            layout='fill'
-            objectFit='cover'
-          />
+          <Image src={coverPhoto.url} alt='' layout='fill' objectFit='cover' />
         </div>
 
         <div className='text-card'>

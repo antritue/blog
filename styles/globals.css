@@ -257,7 +257,24 @@ main {
   }
 }
 
-/* project */
+/* introduction */
+.introduction {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.intro-title {
+  position: relative;
+  margin: 3rem 0;
+}
+
+.intro-cover {
+  position: relative;
+  height: 45vh;
+}
+
+/* card */
 .card {
   margin: 0 auto;
   box-shadow: var(--shadow);
@@ -282,4 +299,24 @@ main {
 
 .text-card {
   padding: 1.5rem;
+}
+
+/* footer  */
+.footer {
+  padding: 3em 0;
+  margin-top: 4em;
+  text-align: center;
+}
+
+.footer__link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--clr-fg);
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 2em;
+    margin-top: 3em;
+  }
 }

@@ -6,6 +6,7 @@ import { ThemeContext } from '../contexts/theme';
 import BlogCard from '../components/BlogCard';
 
 import { GraphQLClient, gql } from 'graphql-request';
+import Footer from '../components/Footer';
 
 const graphcms = new GraphQLClient(
   'https://api-ap-northeast-1.hygraph.com/v2/ckwattc122q3g01w37o2ceapa/master'
@@ -71,7 +72,7 @@ export default function Home({ posts }) {
       </main>
 
       {/* <ScrollToTop /> */}
-      {/* <Footer />  */}
+      <Footer />
     </div>
   );
 }
