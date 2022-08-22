@@ -1,14 +1,10 @@
 import Image from 'next/image';
 
-const Introduction = () => {
+const Introduction = ({ src }) => {
   return (
     <div className='introduction'>
       <div className='intro-cover'>
-        <Image src='/blog-cover.jpg' layout='fill' objectFit='cover' />
-      </div>
-      <div className='intro-title'>
-        <h1>Hi there</h1>
-        <h2>Welcome to my blog</h2>
+        <Image src={src} layout='fill' objectFit='cover' />
       </div>
     </div>
   );

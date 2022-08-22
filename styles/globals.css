@@ -334,3 +334,24 @@ main {
     display: none;
   }
 }
+
+/* slug */
+.content h1 {
+  margin: 3rem 0;
+  text-align: center;
+}
+.content h2 {
+  margin: 2rem 0;
+}
+.content p,
+img {
+  margin: 1rem 0;
+}
+.content ul {
+  margin-left: 1rem;
+  list-style-type: disc;
+}
+.content img {
+  display: block;
+  margin: 0 auto;
+}

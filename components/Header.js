@@ -1,4 +1,3 @@
-import Introduction from './Introduction';
 import Navbar from './Navbar';
 
 const Header = () => {
@@ -6,13 +5,12 @@ const Header = () => {
     <>
       <header className='header center'>
         <h3>
-          <a href='#' className='link'>
-            Title
+          <a href='/' className='link'>
+            Kim Ngân
           </a>
         </h3>
         <Navbar />
       </header>
-      <Introduction />
     </>
   );
 };

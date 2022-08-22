@@ -19,19 +19,19 @@ const Navbar = () => {
       >
         <li className='nav__list-item'>
           <a href='#' onClick={toggleNavList} className='link link--nav'>
-            Category 1
+            Sức khỏe tinh thần
           </a>
         </li>
 
         <li className='nav__list-item'>
           <a href='#' onClick={toggleNavList} className='link link--nav'>
-            Category 2
+            Hành trình sự nghiệp
           </a>
         </li>
 
         <li className='nav__list-item'>
           <a href='#' onClick={toggleNavList} className='link link--nav'>
-            Category 3
+            Cuộc sống trưởng thành
           </a>
         </li>
       </ul>
