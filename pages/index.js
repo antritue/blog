@@ -1,8 +1,6 @@
-import Head from 'next/head';
-import Image from 'next/image';
 import { useContext } from 'react';
 import { ThemeContext } from '../contexts/theme';
-import { GraphQLClient, gql } from 'graphql-request';
+import { GraphQLClient } from 'graphql-request';
 
 import Header from '../components/Header';
 import Introduction from '../components/Introduction';
@@ -10,37 +8,12 @@ import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 
+import { blogList } from './api';
+
 const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
 
-const QUERY = gql`
-  {
-    posts {
-      id
-      title
-      datePublished
-      slug
-      content {
-        html
-      }
-      author {
-        name
-        avatar {
-          url
-        }
-      }
-      coverPhoto {
-        publishedAt
-        createdBy {
-          id
-        }
-        url
-      }
-    }
-  }
-`;
-
 export async function getStaticProps() {
-  const { posts } = await graphcms.request(QUERY);
+  const { posts } = await graphcms.request(blogList);
   return {
     props: {
       posts,
@@ -66,10 +39,9 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <BlogCard
               title={post.title}
-              author={post.author}
-              coverPhoto={post.coverPhoto}
+              src={post.coverPhoto.url}
+              alt={post.alt}
               key={post.id}
-              datePublished={post.datePublished}
               slug={post.slug}
             />
           ))}
