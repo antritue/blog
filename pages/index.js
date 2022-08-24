@@ -14,6 +14,7 @@ const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
 
 export async function getStaticProps() {
   const { posts } = await graphcms.request(blogList);
+  console.log(posts);
   return {
     props: {
       posts,
@@ -39,7 +40,7 @@ export default function Home({ posts }) {
           {posts.map((post) => (
             <BlogCard
               title={post.title}
-              src={post.coverPhoto.url}
+              src={post.coverPhoto.url ? post.coverPhoto.url : ''}
               alt={post.alt}
               key={post.id}
               slug={post.slug}
