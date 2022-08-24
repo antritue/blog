@@ -56,14 +56,17 @@ export const categoriesList = gql`
 `;
 
 export const blogListInCategory = gql`
-  query Post($category: String!) {
-    posts(where: { category: { name: $category } }) {
+  query Post($slug: String!) {
+    posts(where: { category: { slug: $slug } }) {
       category {
         name
       }
-      datePublished
-      description
+      id
       title
+      slug
+      coverPhoto {
+        url
+      }
     }
   }
 `;

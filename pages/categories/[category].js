@@ -23,9 +23,8 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const category = params.category;
-  const { posts } = await graphcms.request(blogListInCategory, { category });
-  console.log(posts);
+  const slug = params.category;
+  const { posts } = await graphcms.request(blogListInCategory, { slug });
   const { categories } = await graphcms.request(categoriesList);
   return {
     props: {
@@ -51,14 +50,13 @@ export default function BlogsInCategory({ posts, categories }) {
         </div>
         <div className='cards__grid'>
           {posts.map((post) => (
-            // <BlogCard
-            //   title={post.title}
-            //   src={post.coverPhoto.url ? post.coverPhoto.url : ''}
-            //   alt={post.alt}
-            //   key={post.id}
-            //   slug={post.slug}
-            // />
-            <p>{post.title}</p>
+            <BlogCard
+              title={post.title}
+              src={post.coverPhoto.url ? post.coverPhoto.url : ''}
+              alt={post.alt}
+              key={post.id}
+              slug={post.slug}
+            />
           ))}
         </div>
       </main>
