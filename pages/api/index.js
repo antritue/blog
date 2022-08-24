@@ -44,3 +44,26 @@ export const postDetail = gql`
     }
   }
 `;
+
+export const categoriesList = gql`
+  {
+    categories {
+      id
+      slug
+      name
+    }
+  }
+`;
+
+export const blogListInCategory = gql`
+  query Post($category: String!) {
+    posts(where: { category: { name: $category } }) {
+      category {
+        name
+      }
+      datePublished
+      description
+      title
+    }
+  }
+`;

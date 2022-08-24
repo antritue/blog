@@ -4,8 +4,9 @@ import WbSunnyRoundedIcon from '@material-ui/icons/WbSunnyRounded';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { ThemeContext } from '../contexts/theme';
+import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar = ({ categories }) => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
   const [showNavList, setShowNavList] = useState(false);
 
@@ -17,7 +18,16 @@ const Navbar = () => {
         style={{ display: showNavList ? 'flex' : null }}
         className='nav__list'
       >
-        <li className='nav__list-item'>
+        {categories.map((category) => (
+          <li className='nav__list-item'>
+            <Link href={`/categories/${category.slug}`}>
+              <a onClick={toggleNavList} className='link link--nav'>
+                {category.name}
+              </a>
+            </Link>
+          </li>
+        ))}
+        {/* <li className='nav__list-item'>
           <a href='#' onClick={toggleNavList} className='link link--nav'>
             Sức khỏe tinh thần
           </a>
@@ -33,7 +43,7 @@ const Navbar = () => {
           <a href='#' onClick={toggleNavList} className='link link--nav'>
             Cuộc sống trưởng thành
           </a>
-        </li>
+        </li> */}
       </ul>
 
       <button

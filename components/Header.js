@@ -1,6 +1,6 @@
 import Navbar from './Navbar';
 
-const Header = () => {
+const Header = ({ categories }) => {
   return (
     <>
       <header className='header center'>
@@ -9,7 +9,7 @@ const Header = () => {
             Kim Ngân
           </a>
         </h3>
-        <Navbar />
+        <Navbar categories={categories} />
       </header>
     </>
   );

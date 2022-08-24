@@ -7,7 +7,7 @@ import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-import { slugList, postDetail } from '../api';
+import { slugList, postDetail, categoriesList } from '../api';
 
 const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
 
@@ -21,17 +21,18 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const data = await graphcms.request(postDetail, { slug });
-  const post = data.post;
+  const { post } = await graphcms.request(postDetail, { slug });
+  const { categories } = await graphcms.request(categoriesList);
   return {
     props: {
       post,
+      categories,
     },
     revalidate: 30,
   };
 }
 
-export default function BlogPost({ post }) {
+export default function BlogPost({ post, categories }) {
   const [{ themeName }] = useContext(ThemeContext);
 
   return (
@@ -41,7 +42,7 @@ export default function BlogPost({ post }) {
         <meta name='description' content={post.description} />
       </Head>
       <div id='top' className={`${themeName} app`}>
-        <Header />
+        <Header categories={categories} />
         <Introduction src={post.coverPhoto.url} />
 
         <main className='content'>
