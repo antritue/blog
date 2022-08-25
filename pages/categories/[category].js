@@ -25,22 +25,20 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const slug = params.category;
   const { posts } = await graphcms.request(blogListInCategory, { slug });
-  const { categories } = await graphcms.request(categoriesList);
   return {
     props: {
       posts,
-      categories,
     },
     revalidate: 30,
   };
 }
 
-export default function BlogsInCategory({ posts, categories }) {
+export default function BlogsInCategory({ posts }) {
   const [{ themeName }] = useContext(ThemeContext);
 
   return (
     <div id='top' className={`${themeName} app`}>
-      <Header categories={categories} />
+      <Header />
       <Introduction src='/blog-cover.jpg' />
 
       <main>

@@ -8,13 +8,12 @@ import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 
-import { blogList, categoriesList } from './api';
+import { blogList } from './api';
 
 const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
 
 export async function getStaticProps() {
   const { posts } = await graphcms.request(blogList);
-  const { categories } = await graphcms.request(categoriesList);
   return {
     props: {
       posts,
@@ -24,12 +23,12 @@ export async function getStaticProps() {
   };
 }
 
-export default function Home({ posts, categories }) {
+export default function Home({ posts }) {
   const [{ themeName }] = useContext(ThemeContext);
 
   return (
     <div id='top' className={`${themeName} app`}>
-      <Header categories={categories} />
+      <Header />
       <Introduction src='/blog-cover.jpg' />
 
       <main>
@@ -48,9 +47,6 @@ export default function Home({ posts, categories }) {
             />
           ))}
         </div>
-        {categories.map((category) => (
-          <p>{category.name}</p>
-        ))}
       </main>
 
       <ScrollToTop />

@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import { ThemeContext } from '../contexts/theme';
 import Link from 'next/link';
 
-const Navbar = ({ categories }) => {
+const Navbar = () => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
   const [showNavList, setShowNavList] = useState(false);
 
@@ -18,32 +18,27 @@ const Navbar = ({ categories }) => {
         style={{ display: showNavList ? 'flex' : null }}
         className='nav__list'
       >
-        {categories.map((category) => (
-          <li className='nav__list-item'>
-            <Link href={`/categories/${category.slug}`}>
-              <a onClick={toggleNavList} className='link link--nav'>
-                {category.name}
-              </a>
-            </Link>
-          </li>
-        ))}
-        {/* <li className='nav__list-item'>
-          <a href='#' onClick={toggleNavList} className='link link--nav'>
-            Sức khỏe tinh thần
-          </a>
-        </li>
-
         <li className='nav__list-item'>
-          <a href='#' onClick={toggleNavList} className='link link--nav'>
-            Hành trình sự nghiệp
-          </a>
+          <Link href={`/categories/suc-khoe-tinh-than`}>
+            <a onClick={toggleNavList} className='link link--nav'>
+              Sức khỏe tinh thần
+            </a>
+          </Link>
         </li>
-
         <li className='nav__list-item'>
-          <a href='#' onClick={toggleNavList} className='link link--nav'>
-            Cuộc sống trưởng thành
-          </a>
-        </li> */}
+          <Link href={`/categories/hanh-trinh-su-nghiep`}>
+            <a onClick={toggleNavList} className='link link--nav'>
+              Hành trình sự nghiệp
+            </a>
+          </Link>
+        </li>
+        <li className='nav__list-item'>
+          <Link href={`/categories/cuoc-song-truong-thanh`}>
+            <a onClick={toggleNavList} className='link link--nav'>
+              Cuộc sống trưởng thành
+            </a>
+          </Link>
+        </li>
       </ul>
 
       <button
