@@ -10,7 +10,7 @@ function BlogPost({ title, src, alt, slug }) {
         </div>
 
         <div className='text-card'>
-          <p>{title}</p>
+          <h3>{title}</h3>
         </div>
       </a>
     </Link>

@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const blogList = gql`
   {
-    posts {
+    posts(orderBy: datePublished_DESC) {
       id
       title
       slug
@@ -57,7 +57,7 @@ export const categoriesList = gql`
 
 export const blogListInCategory = gql`
   query Post($slug: String!) {
-    posts(where: { category: { slug: $slug } }) {
+    posts(where: { category: { slug: $slug } }, orderBy: datePublished_DESC) {
       category {
         name
       }
