@@ -1,12 +1,12 @@
+import Link from 'next/link';
+
 const Footer = () => (
   <footer className='footer'>
-    <a
-      href='https://github.com/antritue/blog'
-      className='link footer__link'
-      target='_blank'
-    >
-      Created by Tue An
-    </a>
+    <Link href='https://github.com/antritue/blog'>
+      <a className='link footer__link' target='_blank'>
+        Created by Tue An
+      </a>
+    </Link>
   </footer>
 );
 
