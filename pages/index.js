@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Head from 'next/head';
 import { ThemeContext } from '../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
@@ -9,22 +9,38 @@ import BlogCard from '../components/BlogCard';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 
-import { blogList } from './api';
+import { POSTS } from './api';
 
-const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
+const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticProps() {
-  const { posts } = await graphcms.request(blogList);
+  const {
+    postsConnection: { edges, pageInfo },
+  } = await graphcms.request(POSTS);
   return {
     props: {
-      posts,
+      edges,
+      pageInfo,
     },
     revalidate: 30,
   };
 }
 
-export default function Home({ posts }) {
+export default function Home({ edges, pageInfo }) {
   const [{ themeName }] = useContext(ThemeContext);
+
+  const [skip, setSkip] = useState(3);
+  const [newPosts, setNewPosts] = useState([]);
+  const [hasNextPage, setHasNextpage] = useState(pageInfo.hasNextPage);
+
+  const loadMore = async () => {
+    const {
+      postsConnection: { edges, pageInfo },
+    } = await graphcms.request(POSTS, { skip });
+    setNewPosts((prevValue) => [...prevValue, ...edges]);
+    setSkip((prevValue) => prevValue + 3);
+    setHasNextpage(pageInfo.hasNextPage);
+  };
 
   return (
     <>
@@ -41,16 +57,37 @@ export default function Home({ posts }) {
             <h2>Welcome to my blog</h2>
           </div>
           <div className='cards__grid'>
-            {posts.map((post) => (
+            {edges.map(({ node }) => (
               <BlogCard
-                title={post.title}
-                src={post.coverPhoto.url ? post.coverPhoto.url : ''}
-                alt={post.alt}
-                key={post.id}
-                slug={post.slug}
+                title={node.title}
+                src={node.coverPhoto.url ? node.coverPhoto.url : ''}
+                alt={node.alt}
+                key={node.id}
+                slug={node.slug}
+              />
+            ))}
+            {newPosts?.map(({ node }) => (
+              <BlogCard
+                title={node.title}
+                src={node.coverPhoto.url ? node.coverPhoto.url : ''}
+                alt={node.alt}
+                key={node.id}
+                slug={node.slug}
               />
             ))}
           </div>
+
+          {hasNextPage ? (
+            <div className='load-more'>
+              <button
+                type='button'
+                className='btn-load-more'
+                onClick={loadMore}
+              >
+                Load more
+              </button>
+            </div>
+          ) : null}
         </main>
 
         <ScrollToTop />

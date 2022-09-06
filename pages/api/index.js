@@ -1,19 +1,26 @@
 import { gql } from 'graphql-request';
 
-export const blogList = gql`
-  {
-    posts(orderBy: datePublished_DESC) {
-      id
-      title
-      slug
-      coverPhoto {
-        url
+export const POSTS = gql`
+  query Posts($skip: Int) {
+    postsConnection(orderBy: datePublished_DESC, first: 3, skip: $skip) {
+      edges {
+        node {
+          id
+          title
+          slug
+          coverPhoto {
+            url
+          }
+        }
+      }
+      pageInfo {
+        hasNextPage
       }
     }
   }
 `;
 
-export const slugList = gql`
+export const SLUGS = gql`
   {
     posts {
       slug
@@ -21,7 +28,7 @@ export const slugList = gql`
   }
 `;
 
-export const postDetail = gql`
+export const POST_DETAIL = gql`
   query Post($slug: String!) {
     post(where: { slug: $slug }) {
       description
@@ -45,7 +52,7 @@ export const postDetail = gql`
   }
 `;
 
-export const categoriesList = gql`
+export const CATEGORIES = gql`
   {
     categories {
       id
@@ -55,17 +62,29 @@ export const categoriesList = gql`
   }
 `;
 
-export const blogListInCategory = gql`
-  query Post($slug: String!) {
-    posts(where: { category: { slug: $slug } }, orderBy: datePublished_DESC) {
-      category {
-        name
+export const POSTS_IN_CATEGORY = gql`
+  query PostsByCategory($slug: String!, $skip: Int) {
+    postsConnection(
+      where: { category: { slug: $slug } }
+      orderBy: datePublished_DESC
+      first: 3
+      skip: $skip
+    ) {
+      edges {
+        node {
+          category {
+            name
+          }
+          id
+          title
+          slug
+          coverPhoto {
+            url
+          }
+        }
       }
-      id
-      title
-      slug
-      coverPhoto {
-        url
+      pageInfo {
+        hasNextPage
       }
     }
   }

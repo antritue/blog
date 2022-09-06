@@ -73,7 +73,7 @@ button {
   --clr-fg: #45453d;
   --clr-fg-alt: #38312e;
   --clr-primary: #c397c7;
-  --shadow: rgba(225, 208, 226, 0.2) 0px 7px 29px 0px;
+  --shadow: rgba(160, 160, 160, 0.2) 0px 7px 29px 0px;
 }
 
 .dark {
@@ -356,4 +356,26 @@ img {
   margin: 0 auto;
   width: 80%;
   height: auto;
+}
+
+/* pagination  */
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.page {
+  padding: 0.7rem 1rem;
+  background-color: var(--clr-primary);
+  margin: 0 0.5rem;
+}
+.load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.btn-load-more {
+  padding: 10px;
+  background-color: var(--clr-primary);
 }

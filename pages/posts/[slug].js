@@ -1,27 +1,28 @@
 import { GraphQLClient } from 'graphql-request';
 import { useContext } from 'react';
 import Head from 'next/head';
+
 import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-import { slugList, postDetail } from '../api';
+import { SLUGS, POST_DETAIL } from '../api';
 
-const graphcms = new GraphQLClient(process.env.GRAPHQL_API);
+const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticPaths() {
-  const { posts } = await graphcms.request(slugList);
+  const { posts } = await graphcms.request(SLUGS);
   return {
     paths: posts.map((post) => ({ params: { slug: post.slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const { post } = await graphcms.request(postDetail, { slug });
+  const { post } = await graphcms.request(POST_DETAIL, { slug });
   return {
     props: {
       post,
