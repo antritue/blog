@@ -10,10 +10,10 @@ import ScrollToTop from '../../components/ScrollToTop';
 
 import { SLUGS, POST_DETAIL } from '../api';
 
-const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
+const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticPaths() {
-  const { posts } = await graphcms.request(SLUGS);
+  const { posts } = await graphClient.request(SLUGS);
   return {
     paths: posts.map((post) => ({ params: { slug: post.slug } })),
     fallback: 'blocking',
@@ -22,7 +22,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
-  const { post } = await graphcms.request(POST_DETAIL, { slug });
+  const { post } = await graphClient.request(POST_DETAIL, { slug });
   return {
     props: {
       post,

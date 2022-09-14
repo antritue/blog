@@ -52,16 +52,6 @@ export const POST_DETAIL = gql`
   }
 `;
 
-export const CATEGORIES = gql`
-  {
-    categories {
-      id
-      slug
-      name
-    }
-  }
-`;
-
 export const POSTS_IN_CATEGORY = gql`
   query PostsByCategory($slug: String!, $skip: Int) {
     postsConnection(

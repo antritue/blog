@@ -2,6 +2,7 @@ import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
@@ -9,51 +10,39 @@ import BlogCard from '../../components/BlogCard';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-import { POSTS_IN_CATEGORY, CATEGORIES } from '../api';
+import { POSTS_IN_CATEGORY } from '../api';
 
-const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
+const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
-export async function getStaticPaths() {
-  const { categories } = await graphcms.request(CATEGORIES);
-  return {
-    paths: categories.map((category) => ({
-      params: { category: category.slug },
-    })),
-    fallback: 'blocking',
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const slug = params.category;
-  const {
-    postsConnection: { edges, pageInfo },
-  } = await graphcms.request(POSTS_IN_CATEGORY, { slug });
-  return {
-    props: {
-      slug,
-      edges,
-      pageInfo,
-    },
-    revalidate: 30,
-  };
-}
-
-export default function BlogsInCategory({ slug, edges, pageInfo }) {
+export default function BlogsInCategory() {
   const [{ themeName }] = useContext(ThemeContext);
+  const router = useRouter();
+  const { category } = router.query;
 
   const [skip, setSkip] = useState(3);
-  const [newPosts, setNewPosts] = useState([]);
-  const [hasNextPage, setHasNextpage] = useState(pageInfo.hasNextPage);
+  const [hasNextPage, setHasNextpage] = useState(false);
+  const [posts, setPosts] = useState([]);
 
-  // useEffect(() => {
-  //   console.log(pageInfo.hasNextPage);
-  // }, []);
+  useEffect(() => {
+    (async () => {
+      const {
+        postsConnection: { edges, pageInfo },
+      } = await graphClient.request(POSTS_IN_CATEGORY, { slug: category });
+      setPosts(edges);
+      setHasNextpage(pageInfo.hasNextPage);
+      setSkip(3);
+      console.log(skip);
+    })();
+  }, [category]);
 
   const loadMore = async () => {
     const {
       postsConnection: { edges, pageInfo },
-    } = await graphcms.request(POSTS_IN_CATEGORY, { slug, skip });
-    setNewPosts((prevValue) => [...prevValue, ...edges]);
+    } = await graphClient.request(POSTS_IN_CATEGORY, {
+      slug: category,
+      skip,
+    });
+    setPosts((prevValue) => [...prevValue, ...edges]);
     setSkip((prevValue) => prevValue + 3);
     setHasNextpage(pageInfo.hasNextPage);
   };
@@ -73,7 +62,7 @@ export default function BlogsInCategory({ slug, edges, pageInfo }) {
             <h2>Welcome to my blog</h2>
           </div>
           <div className='cards__grid'>
-            {edges.map(({ node }) => (
+            {posts.map(({ node }) => (
               <BlogCard
                 title={node.title}
                 src={node.coverPhoto.url ? node.coverPhoto.url : ''}
@@ -82,7 +71,7 @@ export default function BlogsInCategory({ slug, edges, pageInfo }) {
                 slug={node.slug}
               />
             ))}
-            {newPosts?.map(({ node }) => (
+            {/* {newPosts?.map(({ node }) => (
               <BlogCard
                 title={node.title}
                 src={node.coverPhoto.url ? node.coverPhoto.url : ''}
@@ -90,7 +79,7 @@ export default function BlogsInCategory({ slug, edges, pageInfo }) {
                 key={node.id}
                 slug={node.slug}
               />
-            ))}
+            ))} */}
           </div>
 
           {hasNextPage ? (

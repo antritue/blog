@@ -11,12 +11,12 @@ import ScrollToTop from '../components/ScrollToTop';
 
 import { POSTS } from './api';
 
-const graphcms = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
+const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticProps() {
   const {
     postsConnection: { edges, pageInfo },
-  } = await graphcms.request(POSTS);
+  } = await graphClient.request(POSTS);
   return {
     props: {
       edges,
@@ -36,7 +36,7 @@ export default function Home({ edges, pageInfo }) {
   const loadMore = async () => {
     const {
       postsConnection: { edges, pageInfo },
-    } = await graphcms.request(POSTS, { skip });
+    } = await graphClient.request(POSTS, { skip });
     setNewPosts((prevValue) => [...prevValue, ...edges]);
     setSkip((prevValue) => prevValue + 3);
     setHasNextpage(pageInfo.hasNextPage);
