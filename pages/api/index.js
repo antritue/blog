@@ -1,20 +1,30 @@
 import { gql } from 'graphql-request';
 
-export const POSTS = gql`
-  query Posts($skip: Int) {
-    postsConnection(orderBy: datePublished_DESC, first: 3, skip: $skip) {
-      edges {
-        node {
-          id
-          title
-          slug
-          coverPhoto {
-            url
-          }
-        }
+export const LATEST_POSTS = gql`
+  query LatestPost {
+    posts(orderBy: datePublished_DESC, first: 5) {
+      id
+      title
+      slug
+      coverPhoto {
+        url
       }
-      pageInfo {
-        hasNextPage
+    }
+  }
+`;
+
+export const LATEST_POSTS_BY_CATEGORY = gql`
+  query LatestPost($slug: String) {
+    posts(
+      orderBy: datePublished_DESC
+      first: 5
+      where: { category: { slug: $slug } }
+    ) {
+      id
+      title
+      slug
+      coverPhoto {
+        url
       }
     }
   }

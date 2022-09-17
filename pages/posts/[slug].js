@@ -59,7 +59,6 @@ export default function BlogPost({ post }) {
                 />
               </div>
               <p className='author-name'>{post.author.name}</p>
-              {/* <p>{post.author.avatar.url}</p> */}
             </div>
             <div className='date'>
               <p>{post.datePublished}</p>

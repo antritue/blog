@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Head from 'next/head';
 import { ThemeContext } from '../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
@@ -6,41 +6,48 @@ import { GraphQLClient } from 'graphql-request';
 import Header from '../components/Header';
 import Introduction from '../components/Introduction';
 import BlogCard from '../components/BlogCard';
+import CardContainer from '../components/CardContainer';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 
-import { POSTS } from './api';
+import { PATH } from '../constants';
+
+import { LATEST_POSTS, LATEST_POSTS_BY_CATEGORY } from './api';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticProps() {
-  const {
-    postsConnection: { edges, pageInfo },
-  } = await graphClient.request(POSTS);
+  const { posts: latestPosts } = await graphClient.request(LATEST_POSTS);
+  const { posts: latestPostsHealth } = await graphClient.request(
+    LATEST_POSTS_BY_CATEGORY,
+    { slug: PATH.health }
+  );
+  const { posts: latestPostsCareer } = await graphClient.request(
+    LATEST_POSTS_BY_CATEGORY,
+    { slug: PATH.career }
+  );
+  const { posts: latestPostsLife } = await graphClient.request(
+    LATEST_POSTS_BY_CATEGORY,
+    { slug: PATH.life }
+  );
   return {
     props: {
-      edges,
-      pageInfo,
+      latestPosts,
+      latestPostsHealth,
+      latestPostsCareer,
+      latestPostsLife,
     },
     revalidate: 30,
   };
 }
 
-export default function Home({ edges, pageInfo }) {
+export default function Home({
+  latestPosts,
+  latestPostsHealth,
+  latestPostsCareer,
+  latestPostsLife,
+}) {
   const [{ themeName }] = useContext(ThemeContext);
-
-  const [skip, setSkip] = useState(3);
-  const [newPosts, setNewPosts] = useState([]);
-  const [hasNextPage, setHasNextpage] = useState(pageInfo.hasNextPage);
-
-  const loadMore = async () => {
-    const {
-      postsConnection: { edges, pageInfo },
-    } = await graphClient.request(POSTS, { skip });
-    setNewPosts((prevValue) => [...prevValue, ...edges]);
-    setSkip((prevValue) => prevValue + 3);
-    setHasNextpage(pageInfo.hasNextPage);
-  };
 
   return (
     <>
@@ -49,45 +56,29 @@ export default function Home({ edges, pageInfo }) {
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />
-        <Introduction src='/blog-cover.jpg' />
+        {/* <Introduction src='/blog-cover.jpg' /> */}
 
         <main>
           <div className='intro-title'>
             <h1>Hi there</h1>
             <h2>Welcome to my blog</h2>
           </div>
-          <div className='cards__grid'>
-            {edges.map(({ node }) => (
-              <BlogCard
-                title={node.title}
-                src={node.coverPhoto.url ? node.coverPhoto.url : ''}
-                alt={node.alt}
-                key={node.id}
-                slug={node.slug}
-              />
-            ))}
-            {newPosts?.map(({ node }) => (
-              <BlogCard
-                title={node.title}
-                src={node.coverPhoto.url ? node.coverPhoto.url : ''}
-                alt={node.alt}
-                key={node.id}
-                slug={node.slug}
-              />
-            ))}
-          </div>
-
-          {hasNextPage ? (
-            <div className='load-more'>
-              <button
-                type='button'
-                className='btn-load-more'
-                onClick={loadMore}
-              >
-                Load more
-              </button>
-            </div>
-          ) : null}
+          <CardContainer posts={latestPosts} title='Mới nhất' />
+          <CardContainer
+            posts={latestPostsHealth}
+            title='Sức khỏe'
+            path={PATH.health}
+          />
+          <CardContainer
+            posts={latestPostsCareer}
+            title='Sự nghiệp'
+            path={PATH.career}
+          />
+          <CardContainer
+            posts={latestPostsLife}
+            title='Cuộc sống'
+            path={PATH.life}
+          />
         </main>
 
         <ScrollToTop />

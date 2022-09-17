@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 import { ThemeContext } from '../contexts/theme';
 import Link from 'next/link';
+import { PATH } from '../constants';
 
 const Navbar = () => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
@@ -19,21 +20,21 @@ const Navbar = () => {
         className='nav__list'
       >
         <li className='nav__list-item'>
-          <Link href={`/categories/suc-khoe-tinh-than`}>
+          <Link href={`/categories/${PATH.health}`}>
             <a onClick={toggleNavList} className='link link--nav'>
               Sức khỏe
             </a>
           </Link>
         </li>
         <li className='nav__list-item'>
-          <Link href={`/categories/hanh-trinh-su-nghiep`}>
+          <Link href={`/categories/${PATH.career}`}>
             <a onClick={toggleNavList} className='link link--nav'>
               Sự nghiệp
             </a>
           </Link>
         </li>
         <li className='nav__list-item'>
-          <Link href={`/categories/cuoc-song-truong-thanh`}>
+          <Link href={`/categories/${PATH.life}`}>
             <a onClick={toggleNavList} className='link link--nav'>
               Cuộc sống
             </a>
