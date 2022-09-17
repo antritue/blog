@@ -1,6 +1,7 @@
 import { GraphQLClient } from 'graphql-request';
 import { useContext } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 
 import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
@@ -47,6 +48,23 @@ export default function BlogPost({ post }) {
         <main className='content'>
           <h1>{post.title}</h1>
           <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
+
+          <div className='post-info'>
+            <div className='author'>
+              <div className='avatar'>
+                <Image
+                  src={post.author.avatar.url}
+                  layout='fill'
+                  objectFit='cover'
+                />
+              </div>
+              <p className='author-name'>{post.author.name}</p>
+              {/* <p>{post.author.avatar.url}</p> */}
+            </div>
+            <div className='date'>
+              <p>{post.datePublished}</p>
+            </div>
+          </div>
         </main>
 
         <ScrollToTop />

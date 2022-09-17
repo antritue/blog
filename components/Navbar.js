@@ -21,21 +21,21 @@ const Navbar = () => {
         <li className='nav__list-item'>
           <Link href={`/categories/suc-khoe-tinh-than`}>
             <a onClick={toggleNavList} className='link link--nav'>
-              Sức khỏe tinh thần
+              Sức khỏe
             </a>
           </Link>
         </li>
         <li className='nav__list-item'>
           <Link href={`/categories/hanh-trinh-su-nghiep`}>
             <a onClick={toggleNavList} className='link link--nav'>
-              Hành trình sự nghiệp
+              Sự nghiệp
             </a>
           </Link>
         </li>
         <li className='nav__list-item'>
           <Link href={`/categories/cuoc-song-truong-thanh`}>
             <a onClick={toggleNavList} className='link link--nav'>
-              Cuộc sống trưởng thành
+              Cuộc sống
             </a>
           </Link>
         </li>

@@ -304,7 +304,7 @@ main {
 /* footer  */
 .footer {
   padding: 3em 0;
-  margin-top: 4em;
+  margin-top: 3em;
   text-align: center;
 }
 
@@ -356,6 +356,24 @@ img {
   margin: 0 auto;
   width: 80%;
   height: auto;
+}
+.post-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-style: italic;
+  margin-top: 2rem;
+}
+.author {
+  display: flex;
+}
+.avatar {
+  position: relative;
+  width: 56px;
+  height: 6vh;
+}
+.author-name {
+  padding-left: 1rem;
 }
 
 /* pagination  */
