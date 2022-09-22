@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
-import Brightness2Icon from '@material-ui/icons/Brightness2';
-import WbSunnyRoundedIcon from '@material-ui/icons/WbSunnyRounded';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import Brightness2Icon from '@mui/icons-material/Brightness2';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 import { ThemeContext } from '../contexts/theme';
 import Link from 'next/link';
 import { PATH } from '../constants';
@@ -48,7 +48,7 @@ const Navbar = () => {
         className='btn btn--icon nav__theme'
         aria-label='toggle theme'
       >
-        {themeName === 'dark' ? <WbSunnyRoundedIcon /> : <Brightness2Icon />}
+        {themeName === 'dark' ? <LightModeIcon /> : <Brightness2Icon />}
       </button>
 
       <button
