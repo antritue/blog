@@ -40,6 +40,7 @@ export default function BlogPost({ post }) {
       <Head>
         <title>{post.title}</title>
         <meta name='description' content={post.description} />
+        <meta name='keywords' content={post.keywords} />
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />
@@ -55,6 +56,8 @@ export default function BlogPost({ post }) {
                 <Image
                   src={post.author.avatar.url}
                   layout='fill'
+                  alt='test'
+                  // alt={post.alt}
                   objectFit='cover'
                 />
               </div>

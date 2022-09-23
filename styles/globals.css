@@ -407,7 +407,14 @@ img {
 .author-name {
   padding-left: 1rem;
 }
-
+.caption {
+  text-align: center;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.sign {
+  text-align: right;
+}
 /* pagination  */
 .pagination {
   display: flex;

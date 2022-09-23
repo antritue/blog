@@ -44,6 +44,7 @@ export const POST_DETAIL = gql`
       description
       title
       slug
+      keywords
       datePublished
       author {
         name
