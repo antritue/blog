@@ -11,7 +11,7 @@ const Footer = () => (
     <div className='page-info'>
       <div className='page-info-section'>
         <h3 className='footer-title'>Giới thiệu</h3>
-        <Link href='#'>
+        <Link href='/author'>
           <a className='link footer__link '>Kim Ngân</a>
         </Link>
       </div>
