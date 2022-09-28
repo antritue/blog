@@ -63,6 +63,14 @@ export const POST_DETAIL = gql`
   }
 `;
 
+export const CATEGORIES = gql`
+  query Categories {
+    categories {
+      slug
+    }
+  }
+`;
+
 export const POSTS_IN_CATEGORY = gql`
   query PostsByCategory($slug: String!, $skip: Int) {
     postsConnection(
@@ -73,9 +81,6 @@ export const POSTS_IN_CATEGORY = gql`
     ) {
       edges {
         node {
-          category {
-            name
-          }
           id
           title
           slug

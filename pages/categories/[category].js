@@ -10,28 +10,52 @@ import BlogCard from '../../components/BlogCard';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-import { POSTS_IN_CATEGORY } from '../api';
+import { POSTS_IN_CATEGORY, CATEGORIES } from '../api';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
-export default function BlogsInCategory() {
+export async function getStaticPaths() {
+  const { categories } = await graphClient.request(CATEGORIES);
+  return {
+    paths: categories.map((category) => ({
+      // needs to name 'category' because [category].js
+      params: { category: category.slug },
+    })),
+    fallback: 'blocking',
+  };
+}
+
+export async function getStaticProps({ params }) {
+  // needs to name 'slug' because variable in query is '$slug'
+  const slug = params.category;
+  const {
+    postsConnection: { edges, pageInfo },
+  } = await graphClient.request(POSTS_IN_CATEGORY, { slug });
+  return {
+    props: {
+      edges,
+      pageInfo,
+    },
+    revalidate: 30,
+  };
+}
+
+export default function BlogsInCategory({ edges, pageInfo }) {
   const [{ themeName }] = useContext(ThemeContext);
   const router = useRouter();
   const { category } = router.query;
 
+  // const [posts, setPosts] = useState([]);
+  const [newPosts, setNewPosts] = useState([]);
   const [skip, setSkip] = useState(3);
-  const [hasNextPage, setHasNextpage] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [hasNextPage, setHasNextpage] = useState(pageInfo.hasNextPage);
 
   useEffect(() => {
-    (async () => {
-      const {
-        postsConnection: { edges, pageInfo },
-      } = await graphClient.request(POSTS_IN_CATEGORY, { slug: category });
-      setPosts(edges);
+    (() => {
+      // reset when user change category
       setHasNextpage(pageInfo.hasNextPage);
       setSkip(3);
-      console.log(skip);
+      setNewPosts([]);
     })();
   }, [category]);
 
@@ -42,7 +66,7 @@ export default function BlogsInCategory() {
       slug: category,
       skip,
     });
-    setPosts((prevValue) => [...prevValue, ...edges]);
+    setNewPosts((prevValue) => [...prevValue, ...edges]);
     setSkip((prevValue) => prevValue + 3);
     setHasNextpage(pageInfo.hasNextPage);
   };
@@ -62,7 +86,7 @@ export default function BlogsInCategory() {
             <h2>Welcome to my blog</h2>
           </div>
           <div className='cards__grid'>
-            {posts.map(({ node }) => (
+            {edges.map(({ node }) => (
               <BlogCard
                 title={node.title}
                 src={node.coverPhoto.url ? node.coverPhoto.url : ''}
@@ -71,7 +95,7 @@ export default function BlogsInCategory() {
                 slug={node.slug}
               />
             ))}
-            {/* {newPosts?.map(({ node }) => (
+            {newPosts?.map(({ node }) => (
               <BlogCard
                 title={node.title}
                 src={node.coverPhoto.url ? node.coverPhoto.url : ''}
@@ -79,7 +103,7 @@ export default function BlogsInCategory() {
                 key={node.id}
                 slug={node.slug}
               />
-            ))} */}
+            ))}
           </div>
 
           {hasNextPage ? (
@@ -89,7 +113,7 @@ export default function BlogsInCategory() {
                 className='btn-load-more'
                 onClick={loadMore}
               >
-                Load more
+                Xem thêm
               </button>
             </div>
           ) : null}
