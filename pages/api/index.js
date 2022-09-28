@@ -71,6 +71,19 @@ export const CATEGORIES = gql`
   }
 `;
 
+export const CATEGORY = gql`
+  query Category($slug: String!) {
+    category(where: { slug: $slug }) {
+      slug
+      name
+      metaDescription
+      description {
+        html
+      }
+    }
+  }
+`;
+
 export const POSTS_IN_CATEGORY = gql`
   query PostsByCategory($slug: String!, $skip: Int) {
     postsConnection(

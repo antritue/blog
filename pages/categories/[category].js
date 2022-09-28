@@ -10,7 +10,7 @@ import BlogCard from '../../components/BlogCard';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 
-import { POSTS_IN_CATEGORY, CATEGORIES } from '../api';
+import { POSTS_IN_CATEGORY, CATEGORIES, CATEGORY } from '../api';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -31,8 +31,14 @@ export async function getStaticProps({ params }) {
   const {
     postsConnection: { edges, pageInfo },
   } = await graphClient.request(POSTS_IN_CATEGORY, { slug });
+
+  const { category: categoryInfo } = await graphClient.request(CATEGORY, {
+    slug,
+  });
+
   return {
     props: {
+      categoryInfo,
       edges,
       pageInfo,
     },
@@ -40,7 +46,7 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export default function BlogsInCategory({ edges, pageInfo }) {
+export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
   const [{ themeName }] = useContext(ThemeContext);
   const router = useRouter();
   const { category } = router.query;
@@ -74,16 +80,23 @@ export default function BlogsInCategory({ edges, pageInfo }) {
   return (
     <>
       <Head>
-        <title>Kim Ngân - Câu chuyện trưởng thành</title>
+        <title>{categoryInfo.name}</title>
+        <meta name='description' content={categoryInfo.metaDescription} />
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />
-        <Introduction src='/blog-cover.jpg' />
+        {/* <Introduction src='/blog-cover.jpg' /> */}
 
         <main>
           <div className='intro-title'>
-            <h1>Hi there</h1>
-            <h2>Welcome to my blog</h2>
+            <h1>{categoryInfo.name}</h1>
+            <div className='content'>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: categoryInfo.description.html,
+                }}
+              ></div>
+            </div>
           </div>
           <div className='cards__grid'>
             {edges.map(({ node }) => (

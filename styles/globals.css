@@ -265,6 +265,10 @@ main {
   text-align: center;
 }
 
+.intro-title .content {
+  text-align: left;
+}
+
 .intro-cover {
   position: relative;
   height: 45vh;
