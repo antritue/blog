@@ -436,7 +436,3 @@ img {
   justify-content: center;
   margin-top: 3rem;
 }
-.btn-load-more {
-  padding: 10px;
-  background-color: var(--clr-primary);
-}

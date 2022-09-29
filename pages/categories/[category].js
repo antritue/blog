@@ -123,7 +123,7 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
             <div className='load-more'>
               <button
                 type='button'
-                className='btn-load-more'
+                className='btn btn--outline'
                 onClick={loadMore}
               >
                 Xem thêm
