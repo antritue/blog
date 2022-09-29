@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { PATH } from '../constants';
-import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -31,28 +30,23 @@ const Footer = () => (
       </div>
       <div className='page-info-section'>
         <h3 className='footer-title'>Social</h3>
-        <Link href='#'>
-          <a className='link footer__link social'>
-            <FacebookIcon />
-          </a>
-        </Link>
-        <Link href='#'>
-          <a className='link footer__link  social'>
+        <Link href='https://www.instagram.com/byngann.245/'>
+          <a className='link footer__link social' target='_blank'>
             <InstagramIcon />
           </a>
         </Link>
-        <Link href='#'>
-          <a className='link footer__link  social'>
+        <Link href='https://www.youtube.com/channel/UChfs541LTPg-iiDPSFV-XnQ'>
+          <a className='link footer__link social' target='_blank'>
             <YouTubeIcon />
           </a>
         </Link>
-        <Link href='#'>
-          <a className='link footer__link social '>
+        <Link href='https://www.linkedin.com/in/kimngannnguyen/'>
+          <a className='link footer__link social ' target='_blank'>
             <LinkedInIcon />
           </a>
         </Link>
-        <Link href='#'>
-          <a className='link footer__link  social'>
+        <Link href='mailto:nguyenkimngan245@mail.com'>
+          <a className='link footer__link social' target='_blank'>
             <EmailIcon />
           </a>
         </Link>
