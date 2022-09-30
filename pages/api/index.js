@@ -110,8 +110,8 @@ export const POSTS_IN_CATEGORY = gql`
 `;
 
 export const AUTHOR = gql`
-  query Author {
-    author(where: { id: "cl8ah3w6fctz60c1aqqlwqy2c" }) {
+  query Author($id: ID) {
+    author(where: { id: $id }) {
       id
       info {
         html
