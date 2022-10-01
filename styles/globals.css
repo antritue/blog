@@ -378,23 +378,32 @@ main {
   margin: 3rem 0;
   text-align: center;
 }
+
 .content h2 {
   margin: 2rem 0;
 }
+
 .content p,
 img {
   margin: 1rem 0;
 }
+
 .content ul {
   margin-left: 1rem;
   list-style-type: disc;
 }
+
 .content img {
   display: block;
   margin: 0 auto;
   width: 60%;
   height: auto;
 }
+
+.content a {
+  text-decoration: underline;
+}
+
 .post-info {
   display: flex;
   flex-direction: row;
@@ -402,26 +411,32 @@ img {
   font-style: italic;
   margin-top: 2rem;
 }
+
 .author {
   display: flex;
   align-items: center;
 }
+
 .avatar {
   position: relative;
   width: 56px;
   height: 6vh;
 }
+
 .author-name {
   padding-left: 1rem;
 }
+
 .caption {
   text-align: center;
   font-size: 0.9rem;
   font-style: italic;
 }
+
 .sign {
   text-align: right;
 }
+
 /* pagination  */
 .pagination {
   display: flex;
@@ -429,11 +444,13 @@ img {
   justify-content: center;
   margin: 2rem 0;
 }
-.page {
+
+/* .page {
   padding: 0.7rem 1rem;
   background-color: var(--clr-primary);
   margin: 0 0.5rem;
-}
+} */
+
 .load-more {
   display: flex;
   justify-content: center;
