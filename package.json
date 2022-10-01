@@ -13,6 +13,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.10.6",
+    "dayjs": "^1.11.5",
     "graphql": "^16.5.0",
     "graphql-request": "^4.3.0",
     "next": "12.2.4",

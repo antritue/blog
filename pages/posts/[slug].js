@@ -2,6 +2,7 @@ import { GraphQLClient } from 'graphql-request';
 import { useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import dayjs from 'dayjs';
 
 import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
@@ -34,6 +35,7 @@ export async function getStaticProps({ params }) {
 
 export default function BlogPost({ post }) {
   const [{ themeName }] = useContext(ThemeContext);
+  let date = dayjs(post.createdAt).format('DD/MM/YYYY');
 
   return (
     <>
@@ -44,7 +46,9 @@ export default function BlogPost({ post }) {
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />
-        <Introduction src={post.coverPhoto.url} />
+        {post.coverPhoto.url ? (
+          <Introduction src={post.coverPhoto.url} />
+        ) : null}
 
         <main className='content'>
           <h1>{post.title}</h1>
@@ -56,15 +60,14 @@ export default function BlogPost({ post }) {
                 <Image
                   src={post.author.avatar.url}
                   layout='fill'
-                  alt='test'
-                  // alt={post.alt}
+                  alt='tác giả'
                   objectFit='cover'
                 />
               </div>
               <p className='author-name'>{post.author.name}</p>
             </div>
             <div className='date'>
-              <p>{post.datePublished}</p>
+              <p>{date}</p>
             </div>
           </div>
         </main>

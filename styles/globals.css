@@ -404,6 +404,7 @@ img {
 }
 .author {
   display: flex;
+  align-items: center;
 }
 .avatar {
   position: relative;
