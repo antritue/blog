@@ -20,13 +20,6 @@ const Navbar = () => {
         className='nav__list'
       >
         <li className='nav__list-item'>
-          <Link href={`/categories/${PATH.health}`}>
-            <a onClick={toggleNavList} className='link link--nav'>
-              Sức khỏe
-            </a>
-          </Link>
-        </li>
-        <li className='nav__list-item'>
           <Link href={`/categories/${PATH.career}`}>
             <a onClick={toggleNavList} className='link link--nav'>
               Sự nghiệp

@@ -16,10 +16,6 @@ const Footer = () => (
       </div>
       <div className='page-info-section'>
         <h3 className='footer-title'>Khám phá</h3>
-        <Link href={`/categories/${PATH.health}`}>
-          <a className='link footer__link '>Sức khỏe</a>
-        </Link>
-        <br></br>
         <Link href={`/categories/${PATH.career}`}>
           <a className='link footer__link '>Sự nghiệp</a>
         </Link>
