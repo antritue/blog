@@ -33,6 +33,13 @@ const Navbar = () => {
             </a>
           </Link>
         </li>
+        <li className='nav__list-item'>
+          <Link href={'author'}>
+            <a onClick={toggleNavList} className='link link--nav'>
+              Kim Ngân là ai?
+            </a>
+          </Link>
+        </li>
       </ul>
 
       <button
