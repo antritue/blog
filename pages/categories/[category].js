@@ -81,7 +81,7 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
     <>
       <Head>
         <title>{categoryInfo.name}</title>
-        <meta name='description' content={categoryInfo.metaDescription} />
+        <meta name='description' content={categoryInfo.description} />
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />
@@ -90,13 +90,13 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
         <main>
           <div className='intro-title'>
             <h1>{categoryInfo.name}</h1>
-            <div className='content'>
+            {/* <div className='content'>
               <div
                 dangerouslySetInnerHTML={{
                   __html: categoryInfo.description.html,
                 }}
               ></div>
-            </div>
+            </div> */}
           </div>
           <div className='cards__grid'>
             {edges.map(({ node }) => (

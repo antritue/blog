@@ -76,10 +76,7 @@ export const CATEGORY = gql`
     category(where: { slug: $slug }) {
       slug
       name
-      metaDescription
-      description {
-        html
-      }
+      description
     }
   }
 `;
@@ -116,7 +113,6 @@ export const AUTHOR = gql`
       info {
         html
       }
-      keywords
       description
       title
     }

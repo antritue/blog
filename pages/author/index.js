@@ -33,7 +33,6 @@ export default function BlogPost({ author }) {
       <Head>
         <title>{author.title}</title>
         <meta name='description' content={author.description} />
-        <meta name='keywords' content={author.keywords} />
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />
