@@ -14,7 +14,9 @@ import { AUTHOR } from '../api';
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticProps() {
-  const { author } = await graphClient.request(AUTHOR);
+  const { author } = await graphClient.request(AUTHOR, {
+    id: process.env.NEXT_PUBLIC_AUTHOR_ID,
+  });
   return {
     props: {
       author,
@@ -31,7 +33,6 @@ export default function BlogPost({ author }) {
       <Head>
         <title>{author.title}</title>
         <meta name='description' content={author.description} />
-        <meta name='keywords' content={author.keywords} />
       </Head>
       <div id='top' className={`${themeName} app`}>
         <Header />

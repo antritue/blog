@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const LATEST_POSTS = gql`
   query LatestPost {
-    posts(orderBy: datePublished_DESC, first: 5) {
+    posts(orderBy: createdAt_DESC, first: 5) {
       id
       title
       slug
@@ -16,7 +16,7 @@ export const LATEST_POSTS = gql`
 export const LATEST_POSTS_BY_CATEGORY = gql`
   query LatestPost($slug: String) {
     posts(
-      orderBy: datePublished_DESC
+      orderBy: createdAt_DESC
       first: 5
       where: { category: { slug: $slug } }
     ) {
@@ -45,7 +45,7 @@ export const POST_DETAIL = gql`
       title
       slug
       keywords
-      datePublished
+      createdAt
       author {
         name
         avatar {
@@ -76,10 +76,7 @@ export const CATEGORY = gql`
     category(where: { slug: $slug }) {
       slug
       name
-      metaDescription
-      description {
-        html
-      }
+      description
     }
   }
 `;
@@ -88,7 +85,7 @@ export const POSTS_IN_CATEGORY = gql`
   query PostsByCategory($slug: String!, $skip: Int) {
     postsConnection(
       where: { category: { slug: $slug } }
-      orderBy: datePublished_DESC
+      orderBy: createdAt_DESC
       first: 3
       skip: $skip
     ) {
@@ -110,13 +107,12 @@ export const POSTS_IN_CATEGORY = gql`
 `;
 
 export const AUTHOR = gql`
-  query Author {
-    author(where: { id: "cl8ah3w6fctz60c1aqqlwqy2c" }) {
+  query Author($id: ID) {
+    author(where: { id: $id }) {
       id
       info {
         html
       }
-      keywords
       description
       title
     }

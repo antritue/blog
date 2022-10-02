@@ -4,8 +4,6 @@ import { ThemeContext } from '../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
 
 import Header from '../components/Header';
-import Introduction from '../components/Introduction';
-import BlogCard from '../components/BlogCard';
 import CardContainer from '../components/CardContainer';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
@@ -18,10 +16,6 @@ const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticProps() {
   const { posts: latestPosts } = await graphClient.request(LATEST_POSTS);
-  const { posts: latestPostsHealth } = await graphClient.request(
-    LATEST_POSTS_BY_CATEGORY,
-    { slug: PATH.health }
-  );
   const { posts: latestPostsCareer } = await graphClient.request(
     LATEST_POSTS_BY_CATEGORY,
     { slug: PATH.career }
@@ -33,7 +27,6 @@ export async function getStaticProps() {
   return {
     props: {
       latestPosts,
-      latestPostsHealth,
       latestPostsCareer,
       latestPostsLife,
     },
@@ -43,7 +36,6 @@ export async function getStaticProps() {
 
 export default function Home({
   latestPosts,
-  latestPostsHealth,
   latestPostsCareer,
   latestPostsLife,
 }) {
@@ -64,11 +56,6 @@ export default function Home({
             <h2>Welcome to my blog</h2>
           </div>
           <CardContainer posts={latestPosts} title='Mới nhất' />
-          <CardContainer
-            posts={latestPostsHealth}
-            title='Sức khỏe'
-            path={PATH.health}
-          />
           <CardContainer
             posts={latestPostsCareer}
             title='Sự nghiệp'
