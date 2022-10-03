@@ -34,7 +34,7 @@ const Navbar = () => {
           </Link>
         </li>
         <li className='nav__list-item'>
-          <Link href={'author'}>
+          <Link href={'/author'}>
             <a onClick={toggleNavList} className='link link--nav'>
               Kim Ngân là ai?
             </a>
