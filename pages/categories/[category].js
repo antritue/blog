@@ -42,7 +42,7 @@ export async function getStaticProps({ params }) {
       edges,
       pageInfo,
     },
-    revalidate: 30,
+    revalidate: 7200,
   };
 }
 
