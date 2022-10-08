@@ -9,6 +9,7 @@ import Introduction from '../../components/Introduction';
 import BlogCard from '../../components/BlogCard';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
+import GAScript from '../../components/GAScript';
 
 import { POSTS_IN_CATEGORY, CATEGORIES, CATEGORY } from '../api';
 
@@ -83,6 +84,8 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
         <title>{categoryInfo.name}</title>
         <meta name='description' content={categoryInfo.description} />
       </Head>
+      <GAScript />
+
       <div id='top' className={`${themeName} app`}>
         <Header />
         {/* <Introduction src='/blog-cover.jpg' /> */}
