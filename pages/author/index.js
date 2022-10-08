@@ -8,6 +8,7 @@ import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
+import GAScript from '../../components/GAScript';
 
 import { AUTHOR } from '../api';
 
@@ -33,6 +34,7 @@ export default function BlogPost({ author }) {
         <title>{author.title}</title>
         <meta name='description' content={author.description} />
       </Head>
+      <GAScript />
       <div id='top' className={`${themeName} app`}>
         <Header />
         {/* <Introduction src={author.coverPhoto.url} /> */}

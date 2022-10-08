@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import Head from 'next/head';
+import Script from 'next/script';
 import { ThemeContext } from '../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
 
@@ -7,6 +8,7 @@ import Header from '../components/Header';
 import CardContainer from '../components/CardContainer';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import GAScript from '../components/GAScript';
 
 import { PATH } from '../constants';
 
@@ -46,6 +48,8 @@ export default function Home({
       <Head>
         <title>Kim Ngân - Câu chuyện trưởng thành</title>
       </Head>
+
+      <GAScript />
       <div id='top' className={`${themeName} app`}>
         <Header />
         {/* <Introduction src='/blog-cover.jpg' /> */}

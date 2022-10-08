@@ -9,6 +9,7 @@ import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
+import GAScript from '../../components/GAScript';
 
 import { SLUGS, POST_DETAIL } from '../api';
 
@@ -44,6 +45,7 @@ export default function BlogPost({ post }) {
         <meta name='description' content={post.description} />
         <meta name='keywords' content={post.keywords} />
       </Head>
+      <GAScript />
       <div id='top' className={`${themeName} app`}>
         <Header />
         {post.coverPhoto.url ? (
