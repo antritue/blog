@@ -54,14 +54,14 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
 
   // const [posts, setPosts] = useState([]);
   const [newPosts, setNewPosts] = useState([]);
-  const [skip, setSkip] = useState(3);
+  const [skip, setSkip] = useState(9);
   const [hasNextPage, setHasNextpage] = useState(pageInfo.hasNextPage);
 
   useEffect(() => {
     (() => {
       // reset when user change category
       setHasNextpage(pageInfo.hasNextPage);
-      setSkip(3);
+      setSkip(9);
       setNewPosts([]);
     })();
   }, [category]);
@@ -74,7 +74,7 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
       skip,
     });
     setNewPosts((prevValue) => [...prevValue, ...edges]);
-    setSkip((prevValue) => prevValue + 3);
+    setSkip((prevValue) => prevValue + 9);
     setHasNextpage(pageInfo.hasNextPage);
   };
 

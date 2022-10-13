@@ -86,7 +86,7 @@ export const POSTS_IN_CATEGORY = gql`
     postsConnection(
       where: { category: { slug: $slug } }
       orderBy: createdAt_DESC
-      first: 3
+      first: 9
       skip: $skip
     ) {
       edges {
