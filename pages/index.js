@@ -35,7 +35,7 @@ export async function getStaticProps() {
       latestPostsCareer,
       latestPostsLife,
     },
-    revalidate: 7200,
+    // revalidate: 7200,
   };
 }
 
