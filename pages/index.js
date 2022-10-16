@@ -12,7 +12,10 @@ import GAScript from '../components/GAScript';
 
 import { PATH } from '../constants';
 
-import { LATEST_POSTS, LATEST_POSTS_BY_CATEGORY } from './api';
+import {
+  LATEST_POSTS,
+  LATEST_POSTS_BY_CATEGORY,
+} from '../utils/graphqlRequest';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -32,7 +35,7 @@ export async function getStaticProps() {
       latestPostsCareer,
       latestPostsLife,
     },
-    revalidate: 7200,
+    // revalidate: 7200,
   };
 }
 

@@ -11,7 +11,7 @@ import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 import GAScript from '../../components/GAScript';
 
-import { SLUGS, POST_DETAIL } from '../api';
+import { SLUGS, POST_DETAIL } from '../../utils/graphqlRequest';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -30,7 +30,7 @@ export async function getStaticProps({ params }) {
     props: {
       post,
     },
-    revalidate: 7200,
+    // revalidate: 7200,
   };
 }
 

@@ -10,7 +10,7 @@ import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
 import GAScript from '../../components/GAScript';
 
-import { AUTHOR } from '../api';
+import { AUTHOR } from '../../utils/graphqlRequest';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
