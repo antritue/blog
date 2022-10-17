@@ -50,6 +50,10 @@ export default function Home({
     <>
       <Head>
         <title>Kim Ngân - Câu chuyện trưởng thành</title>
+        <meta
+          name='description'
+          content='Nơi chia sẻ về hai thứ mình yêu thích nhất, sáng tạo nội dung và chăm sóc bản thân. Cuộc sống tuổi 25 có gì vui?'
+        />
       </Head>
 
       <GAScript />
@@ -59,8 +63,7 @@ export default function Home({
 
         <main>
           <div className='intro-title'>
-            <h1>Hi there</h1>
-            <h2>Welcome to my blog</h2>
+            <h1>Chào bạn bước vào thế giới của đứa trẻ tập làm người lớn</h1>
           </div>
           <CardContainer posts={latestPosts} title='Mới nhất' />
           <CardContainer

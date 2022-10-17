@@ -26,7 +26,7 @@ export async function getStaticPaths() {
       // needs to name 'category' because [category].js
       params: { category: category.slug },
     })),
-    fallback: 'blocking',
+    fallback: false,
   };
 }
 
