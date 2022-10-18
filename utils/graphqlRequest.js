@@ -31,7 +31,7 @@ export const LATEST_POSTS_BY_CATEGORY = gql`
 `;
 
 export const SLUGS = gql`
-  {
+  query Slugs {
     posts {
       slug
     }

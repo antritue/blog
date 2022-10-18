@@ -29,13 +29,14 @@ const handler = async (req, res) => {
 
   // Post
   try {
+    console.log(req.body);
     const { posts } = await graphClient.request(SLUGS);
     await Promise.all(
       posts.map(async (post) => await res.revalidate(`/posts/${post.slug}`))
     );
   } catch (err) {
     console.log(err);
-    return res.status(500).send('Error revalidating post');
+    return res.status(500).send(err.message);
   }
 
   return res.json({ revalidated: true });

@@ -49,7 +49,7 @@ export default function Home({
   return (
     <>
       <Head>
-        <title>Kim Ngân - Câu chuyện trưởng thành</title>
+        <title>Kim Ngân</title>
         <meta
           name='description'
           content='Nơi chia sẻ về hai thứ mình yêu thích nhất, sáng tạo nội dung và chăm sóc bản thân. Cuộc sống tuổi 25 có gì vui?'
