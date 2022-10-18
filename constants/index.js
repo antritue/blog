@@ -1,4 +1,4 @@
 export const PATH = {
-  career: 'su-nghiep',
-  life: 'cuoc-song',
+  career: 'content-hay-con-sen',
+  life: 'phat-trien-ban-than',
 };

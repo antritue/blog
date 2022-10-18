@@ -63,7 +63,7 @@ export default function Home({
 
         <main>
           <div className='intro-title'>
-            <h1>Chào bạn bước vào thế giới của đứa trẻ tập làm người lớn</h1>
+            <h1>Người lớn tập sự</h1>
           </div>
           <CardContainer posts={latestPosts} title='Mới nhất' />
           <CardContainer

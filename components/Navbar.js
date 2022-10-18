@@ -22,14 +22,14 @@ const Navbar = () => {
         <li className='nav__list-item'>
           <Link href={`/categories/${PATH.career}`}>
             <a onClick={toggleNavList} className='link link--nav'>
-              Sự nghiệp
+              Content hay con sen
             </a>
           </Link>
         </li>
         <li className='nav__list-item'>
           <Link href={`/categories/${PATH.life}`}>
             <a onClick={toggleNavList} className='link link--nav'>
-              Cuộc sống
+              Phát triển bản thân
             </a>
           </Link>
         </li>
