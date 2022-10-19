@@ -67,6 +67,7 @@ export const CATEGORIES = gql`
   query Categories {
     categories {
       slug
+      name
     }
   }
 `;

@@ -1,7 +1,6 @@
-import { PATH } from '../../constants';
 import { GraphQLClient } from 'graphql-request';
 
-import { SLUGS } from '../../utils/graphqlRequest';
+import { SLUGS, CATEGORIES } from '../../utils/graphqlRequest';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -20,8 +19,12 @@ const handler = async (req, res) => {
 
   // Category
   try {
-    await res.revalidate(`/categories/${PATH.life}`);
-    await res.revalidate(`/categories/${PATH.career}`);
+    const { categories } = await graphClient.request(CATEGORIES);
+    await Promise.all(
+      categories.map(
+        async (item) => await res.revalidate(`/categories/${item.slug}`)
+      )
+    );
   } catch (err) {
     console.log(err);
     return res.status(500).send('Error revalidating category');

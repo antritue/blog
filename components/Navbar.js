@@ -4,11 +4,12 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { ThemeContext } from '../contexts/theme';
+import { CategoryContext } from '../contexts/categories';
 import Link from 'next/link';
-import { PATH } from '../constants';
 
 const Navbar = () => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
+  const category = useContext(CategoryContext);
   const [showNavList, setShowNavList] = useState(false);
 
   const toggleNavList = () => setShowNavList(!showNavList);
@@ -19,20 +20,15 @@ const Navbar = () => {
         style={{ display: showNavList ? 'flex' : null }}
         className='nav__list'
       >
-        <li className='nav__list-item'>
-          <Link href={`/categories/${PATH.career}`}>
-            <a onClick={toggleNavList} className='link link--nav'>
-              Content hay con sen
-            </a>
-          </Link>
-        </li>
-        <li className='nav__list-item'>
-          <Link href={`/categories/${PATH.life}`}>
-            <a onClick={toggleNavList} className='link link--nav'>
-              Phát triển bản thân
-            </a>
-          </Link>
-        </li>
+        {category.map((item) => (
+          <li className='nav__list-item' key={item.slug}>
+            <Link href={`/categories/${item.slug}`}>
+              <a onClick={toggleNavList} className='link link--nav'>
+                {item.name}
+              </a>
+            </Link>
+          </li>
+        ))}
         <li className='nav__list-item'>
           <Link href={'/author'}>
             <a onClick={toggleNavList} className='link link--nav'>

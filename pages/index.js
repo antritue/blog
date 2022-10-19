@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import Head from 'next/head';
-import Script from 'next/script';
 import { ThemeContext } from '../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
 
@@ -10,40 +9,41 @@ import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import GAScript from '../components/GAScript';
 
-import { PATH } from '../constants';
-
 import {
   LATEST_POSTS,
   LATEST_POSTS_BY_CATEGORY,
+  CATEGORIES,
 } from '../utils/graphqlRequest';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
 export async function getStaticProps() {
   const { posts: latestPosts } = await graphClient.request(LATEST_POSTS);
-  const { posts: latestPostsCareer } = await graphClient.request(
-    LATEST_POSTS_BY_CATEGORY,
-    { slug: PATH.career }
+  const { categories } = await graphClient.request(CATEGORIES);
+
+  const latestPostsByCategory = await Promise.all(
+    categories.map(async (item) => {
+      const posts = await graphClient.request(LATEST_POSTS_BY_CATEGORY, {
+        slug: item.slug,
+      });
+      return {
+        posts,
+        category: item.name,
+        path: item.slug,
+      };
+    })
   );
-  const { posts: latestPostsLife } = await graphClient.request(
-    LATEST_POSTS_BY_CATEGORY,
-    { slug: PATH.life }
-  );
+
   return {
     props: {
       latestPosts,
-      latestPostsCareer,
-      latestPostsLife,
+      latestPostsByCategory,
     },
     // revalidate: 7200,
   };
 }
 
-export default function Home({
-  latestPosts,
-  latestPostsCareer,
-  latestPostsLife,
-}) {
+export default function Home({ latestPosts, latestPostsByCategory }) {
   const [{ themeName }] = useContext(ThemeContext);
 
   return (
@@ -66,16 +66,14 @@ export default function Home({
             <h1>Người lớn tập sự</h1>
           </div>
           <CardContainer posts={latestPosts} title='Mới nhất' />
-          <CardContainer
-            posts={latestPostsCareer}
-            title='Sự nghiệp'
-            path={PATH.career}
-          />
-          <CardContainer
-            posts={latestPostsLife}
-            title='Cuộc sống'
-            path={PATH.life}
-          />
+          {latestPostsByCategory.map((item) => (
+            <CardContainer
+              posts={item.posts.posts}
+              title={item.category}
+              path={item.path}
+              key={item.path}
+            />
+          ))}
         </main>
 
         <ScrollToTop />
