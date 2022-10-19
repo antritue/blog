@@ -19,13 +19,18 @@ export async function getStaticPaths() {
   const { posts } = await graphClient.request(SLUGS);
   return {
     paths: posts.map((post) => ({ params: { slug: post.slug } })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
 export async function getStaticProps({ params }) {
   const slug = params.slug;
   const { post } = await graphClient.request(POST_DETAIL, { slug });
+
+  if (!post) {
+    return { notFound: true };
+  }
+
   return {
     props: {
       post,

@@ -26,7 +26,7 @@ export async function getStaticPaths() {
       // needs to name 'category' because [category].js
       params: { category: category.slug },
     })),
-    fallback: false,
+    fallback: 'blocking',
   };
 }
 
@@ -40,6 +40,10 @@ export async function getStaticProps({ params }) {
   const { category: categoryInfo } = await graphClient.request(CATEGORY, {
     slug,
   });
+
+  if (!edges || !pageInfo || !categoryInfo) {
+    return { notFound: true };
+  }
 
   return {
     props: {

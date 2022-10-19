@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ['media.graphassets.com', 'localhost'],
   },
+  experimental: {
+    // Defaults to 50MB
+    isrMemoryCacheSize: 0,
+  },
 };
 
 module.exports = nextConfig;
