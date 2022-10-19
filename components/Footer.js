@@ -32,7 +32,7 @@ const Footer = () => {
         </div>
         <div className='page-info-section'>
           <h3 className='footer-title'>Social</h3>
-          <Link href='https://www.instagram.com/byngann.245/'>
+          <Link href='https://www.instagram.com/kimngann245/'>
             <a className='link footer__link social' target='_blank'>
               <InstagramIcon />
             </a>
