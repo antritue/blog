@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request';
 
-import { SLUGS, CATEGORIES } from '../../utils/graphqlRequest';
+import { CATEGORIES } from '../../utils/graphqlRequest';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -31,15 +31,13 @@ const handler = async (req, res) => {
   }
 
   // Post
-  try {
-    console.log(req.body);
-    const { posts } = await graphClient.request(SLUGS);
-    await Promise.all(
-      posts.map(async (post) => await res.revalidate(`/posts/${post.slug}`))
-    );
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send(err.message);
+  if (req.query.path) {
+    try {
+      await res.revalidate(`/posts/${req.query.path}`);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send(err.message);
+    }
   }
 
   return res.json({ revalidated: true });

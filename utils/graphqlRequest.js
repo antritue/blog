@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const LATEST_POSTS = gql`
   query LatestPost {
-    posts(orderBy: createdAt_DESC, first: 5) {
+    posts(orderBy: createdAt_DESC, first: 5, stage: PUBLISHED) {
       id
       title
       slug
@@ -18,6 +18,7 @@ export const LATEST_POSTS_BY_CATEGORY = gql`
     posts(
       orderBy: createdAt_DESC
       first: 5
+      stage: PUBLISHED
       where: { category: { slug: $slug } }
     ) {
       id
@@ -32,7 +33,7 @@ export const LATEST_POSTS_BY_CATEGORY = gql`
 
 export const SLUGS = gql`
   query Slugs {
-    posts {
+    posts(first: 1000, stage: PUBLISHED) {
       slug
     }
   }
