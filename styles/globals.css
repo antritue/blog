@@ -21,7 +21,6 @@ h2,
 h3,
 h4 {
   line-height: 1.2;
-  color: var(--clr-fg-alt);
 }
 
 h1 {
@@ -35,10 +34,6 @@ h2 {
 h3 {
   font-size: 1.2rem;
 }
-/* 
-h4 {
-  font-size: 1.3rem;
-} */
 
 ul {
   list-style-type: none;
@@ -68,20 +63,16 @@ button {
 }
 
 .light {
-  --clr-bg: #fcfcfc;
-  --clr-bg-alt: #fff;
+  --clr-bg: #fff;
   --clr-fg: #45453d;
-  --clr-fg-alt: #38312e;
   --clr-primary: #c397c7;
   --shadow: rgba(160, 160, 160, 0.2) 0px 7px 29px 0px;
 }
 
 .dark {
-  --clr-bg: #191d32;
-  --clr-bg-alt: #282f44;
-  --clr-fg: #bdbddd;
-  --clr-fg-alt: #b1d4e0;
-  --clr-primary: #1597bb;
+  --clr-bg: #2c3639;
+  --clr-fg: #dcd7c9;
+  --clr-primary: #a27b5c;
   --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
 }
@@ -160,17 +151,6 @@ main {
   color: var(--clr-bg);
   background-color: var(--clr-primary);
   transition: 0.2s ease-in-out;
-}
-
-.btn--plain {
-  text-transform: initial;
-  background-color: var(--clr-bg-alt);
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px 1px;
-  border: 0;
-}
-
-.btn--plain:hover {
-  transform: translateY(-4px);
 }
 
 .btn--icon {
