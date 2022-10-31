@@ -8,6 +8,7 @@ import '../styles/card.css';
 import '../styles/footer.css';
 import '../styles/scroll.css';
 import '../styles/slug.css';
+import '../styles/slide.css';
 
 function MyApp({ Component, pageProps }) {
   return (
