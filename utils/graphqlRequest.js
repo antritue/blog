@@ -2,7 +2,7 @@ import { gql } from 'graphql-request';
 
 export const LATEST_POSTS = gql`
   query LatestPost {
-    posts(orderBy: createdAt_DESC, first: 5, stage: PUBLISHED) {
+    posts(orderBy: createdAt_DESC, first: 6, stage: PUBLISHED) {
       id
       title
       slug

@@ -5,6 +5,7 @@ import { GraphQLClient } from 'graphql-request';
 
 import Header from '../components/Header';
 import CardContainer from '../components/CardContainer';
+import Slide from '../components/Slide';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
 import GAScript from '../components/GAScript';
@@ -65,7 +66,8 @@ export default function Home({ latestPosts, latestPostsByCategory }) {
           <div className='intro-title'>
             <h1>Người lớn tập sự</h1>
           </div>
-          <CardContainer posts={latestPosts} title='Mới nhất' />
+          {/* <CardContainer posts={latestPosts} title='Mới nhất' /> */}
+          <Slide posts={latestPosts} title='Mới nhất' />
           {latestPostsByCategory.map((item) => (
             <CardContainer
               posts={item.posts.posts}
