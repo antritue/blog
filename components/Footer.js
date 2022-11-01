@@ -12,14 +12,14 @@ const Footer = () => {
 
   return (
     <footer className='footer'>
-      <div className='page-info'>
-        <div className='page-info-section'>
+      <section className='page-info'>
+        <section className='page-info-section'>
           <h3 className='footer-title'>Giới thiệu</h3>
           <Link href='/author'>
             <a className='link footer__link '>Kim Ngân</a>
           </Link>
-        </div>
-        <div className='page-info-section'>
+        </section>
+        <section className='page-info-section'>
           <h3 className='footer-title'>Khám phá</h3>
           {category.map((item) => (
             <>
@@ -29,38 +29,47 @@ const Footer = () => {
               <br></br>
             </>
           ))}
-        </div>
-        <div className='page-info-section'>
+        </section>
+        <section className='page-info-section'>
           <h3 className='footer-title'>Social</h3>
           <Link href='https://www.instagram.com/kimngann245/'>
-            <a className='link footer__link social' target='_blank'>
+            <a
+              className='link footer__link social'
+              target='_blank'
+              aria-label='instagram'
+            >
               <InstagramIcon />
             </a>
           </Link>
           <Link href='https://www.youtube.com/channel/UChfs541LTPg-iiDPSFV-XnQ'>
-            <a className='link footer__link social' target='_blank'>
+            <a
+              className='link footer__link social'
+              target='_blank'
+              aria-label='youtube'
+            >
               <YouTubeIcon />
             </a>
           </Link>
           <Link href='https://www.linkedin.com/in/kimngannnguyen/'>
-            <a className='link footer__link social ' target='_blank'>
+            <a
+              className='link footer__link social '
+              target='_blank'
+              aria-label='linkedin'
+            >
               <LinkedInIcon />
             </a>
           </Link>
           <Link href='mailto:nguyenkimngan245@mail.com'>
-            <a className='link footer__link social' target='_blank'>
+            <a
+              className='link footer__link social'
+              target='_blank'
+              aria-label='email'
+            >
               <EmailIcon />
             </a>
           </Link>
-        </div>
-      </div>
-      {/* <div className='creator'>
-      <Link href='https://github.com/antritue/blog'>
-        <a className='link footer__link ' target='_blank'>
-          Created by Tue An
-        </a>
-      </Link>
-    </div> */}
+        </section>
+      </section>
     </footer>
   );
 };

@@ -41,7 +41,9 @@ export default function BlogPost({ author }) {
 
         <main className='content'>
           <h1>{author.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: author.info.html }}></div>
+          <article
+            dangerouslySetInnerHTML={{ __html: author.info.html }}
+          ></article>
         </main>
 
         <ScrollToTop />

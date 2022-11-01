@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
+import { ThemeContext } from '../contexts/theme';
+import { CategoryContext } from '../contexts/categories';
+import Link from 'next/link';
+
 import Brightness2Icon from '@mui/icons-material/Brightness2';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import { ThemeContext } from '../contexts/theme';
-import { CategoryContext } from '../contexts/categories';
-import Link from 'next/link';
 
 const Navbar = () => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);

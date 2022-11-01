@@ -6,6 +6,7 @@ export const LATEST_POSTS = gql`
       id
       title
       slug
+      alt
       coverPhoto {
         url
       }
@@ -24,6 +25,7 @@ export const LATEST_POSTS_BY_CATEGORY = gql`
       id
       title
       slug
+      alt
       coverPhoto {
         url
       }
@@ -96,6 +98,7 @@ export const POSTS_IN_CATEGORY = gql`
           id
           title
           slug
+          alt
           coverPhoto {
             url
           }

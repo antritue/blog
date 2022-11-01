@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ['media.graphassets.com', 'localhost'],
   },
+  i18n: {
+    locales: ['vi'],
+    defaultLocale: 'vi',
+  },
   experimental: {
     // Defaults to 50MB
     isrMemoryCacheSize: 0,

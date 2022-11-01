@@ -1,9 +1,11 @@
 .slide .card {
   margin: 1rem;
 }
+
 .slide .img-card {
   height: 25vh;
 }
+
 .rec-item-wrapper {
   height: 100%;
 }
@@ -32,7 +34,7 @@
 }
 
 button.rec-dot {
-  box-shadow: 0 0 1px 3px var(--clr-primary);
+  box-shadow: 0 0 1px 1px var(--clr-primary);
 }
 
 button.rec-dot_active {
@@ -42,6 +44,6 @@ button.rec-dot_active {
 button.rec-dot:active,
 button.rec-dot:hover,
 button.rec-dot:focus {
-  box-shadow: 0 0 1px 3px var(--clr-primary);
+  box-shadow: 0 0 1px 1px var(--clr-primary);
   background-color: var(--clr-primary);
 }
