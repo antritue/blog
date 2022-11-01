@@ -59,24 +59,28 @@ export default function BlogPost({ post }) {
 
         <main className='content'>
           <h1>{post.title}</h1>
-          <div dangerouslySetInnerHTML={{ __html: post.content.html }}></div>
+          <article
+            dangerouslySetInnerHTML={{ __html: post.content.html }}
+          ></article>
 
-          <div className='post-info'>
-            <div className='author'>
-              <div className='avatar'>
+          <section className='post-info'>
+            <section className='author'>
+              <figure className='avatar'>
                 <Image
                   src={post.author.avatar.url}
                   layout='fill'
                   alt='tác giả'
                   objectFit='cover'
                 />
-              </div>
-              <p className='author-name'>{post.author.name}</p>
-            </div>
-            <div className='date'>
-              <p>{date}</p>
-            </div>
-          </div>
+              </figure>
+              <figcaption className='author-name'>
+                {post.author.name}
+              </figcaption>
+            </section>
+            <section className='date'>
+              <date>{date}</date>
+            </section>
+          </section>
         </main>
 
         <ScrollToTop />

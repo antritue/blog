@@ -2,11 +2,11 @@ import Image from 'next/image';
 
 const Introduction = ({ src }) => {
   return (
-    <div className='introduction'>
+    <section className='introduction'>
       <div className='intro-cover'>
         <Image src={src} layout='fill' objectFit='cover' />
       </div>
-    </div>
+    </section>
   );
 };
 

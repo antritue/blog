@@ -5,13 +5,15 @@ function BlogPost({ title, src, alt, slug }) {
   return (
     <Link href={`/posts/${slug}`}>
       <a className='card'>
-        <div className='img-card'>
-          <Image src={src} alt={alt} layout='fill' objectFit='cover' />
-        </div>
+        <article>
+          <figure className='img-card'>
+            <Image src={src} alt={alt} layout='fill' objectFit='cover' />
+          </figure>
 
-        <div className='text-card'>
-          <h3>{title}</h3>
-        </div>
+          <figcaption className='text-card'>
+            <h3>{title}</h3>
+          </figcaption>
+        </article>
       </a>
     </Link>
   );

@@ -99,17 +99,10 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
         {/* <Introduction src='/blog-cover.jpg' /> */}
 
         <main>
-          <div className='intro-title'>
+          <section className='intro-title'>
             <h1>{categoryInfo.name}</h1>
-            {/* <div className='content'>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: categoryInfo.description.html,
-                }}
-              ></div>
-            </div> */}
-          </div>
-          <div className='cards__grid'>
+          </section>
+          <section className='cards__grid'>
             {edges.map(({ node }) => (
               <BlogCard
                 title={node.title}
@@ -128,7 +121,7 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
                 slug={node.slug}
               />
             ))}
-          </div>
+          </section>
 
           {hasNextPage ? (
             <div className='load-more'>

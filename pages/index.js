@@ -66,8 +66,9 @@ export default function Home({ latestPosts, latestPostsByCategory }) {
           <div className='intro-title'>
             <h1>Người lớn tập sự</h1>
           </div>
-          {/* <CardContainer posts={latestPosts} title='Mới nhất' /> */}
+
           <Slide posts={latestPosts} title='Mới nhất' />
+
           {latestPostsByCategory.map((item) => (
             <CardContainer
               posts={item.posts.posts}
