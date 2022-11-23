@@ -35,7 +35,6 @@ export async function getStaticProps({ params }) {
     props: {
       post,
     },
-    // revalidate: 7200,
   };
 }
 
@@ -54,7 +53,7 @@ export default function BlogPost({ post }) {
       <div id='top' className={`${themeName} app`}>
         <Header />
         {post.coverPhoto.url ? (
-          <Introduction src={post.coverPhoto.url} />
+          <Introduction src={post.coverPhoto.url} alt={post.alt} />
         ) : null}
 
         <main className='content'>

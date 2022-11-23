@@ -40,7 +40,6 @@ export async function getStaticProps() {
       latestPosts,
       latestPostsByCategory,
     },
-    // revalidate: 7200,
   };
 }
 
