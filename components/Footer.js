@@ -30,7 +30,7 @@ const Footer = () => {
             </>
           ))}
         </section>
-        <section className='page-info-section'>
+        <section className='page-info-section social-icons'>
           <h3 className='footer-title'>Social</h3>
           <Link href='https://www.instagram.com/kimngann245/'>
             <a
@@ -69,6 +69,36 @@ const Footer = () => {
             </a>
           </Link>
         </section>
+      </section>
+      <section className='hidden-social-icons'>
+        <Link href='https://www.instagram.com/kimngann245/'>
+          <a
+            className='link footer__link'
+            target='_blank'
+            aria-label='instagram'
+          >
+            <InstagramIcon />
+          </a>
+        </Link>
+        <Link href='https://www.youtube.com/channel/UChfs541LTPg-iiDPSFV-XnQ'>
+          <a className='link footer__link' target='_blank' aria-label='youtube'>
+            <YouTubeIcon />
+          </a>
+        </Link>
+        <Link href='https://www.linkedin.com/in/kimngannnguyen/'>
+          <a
+            className='link footer__link '
+            target='_blank'
+            aria-label='linkedin'
+          >
+            <LinkedInIcon />
+          </a>
+        </Link>
+        <Link href='mailto:nguyenkimngan245@mail.com'>
+          <a className='link footer__link' target='_blank' aria-label='email'>
+            <EmailIcon />
+          </a>
+        </Link>
       </section>
     </footer>
   );

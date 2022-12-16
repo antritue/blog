@@ -33,10 +33,6 @@
   grid-gap: 2em;
 }
 
-.cards__grid h3 {
-  font-size: 1rem;
-}
-
 .img-card {
   position: relative;
   width: 100%;
@@ -56,16 +52,11 @@
   .cards-grid-2 .img-card {
     height: 10em;
   }
-
-  .cards__grid h3,
-  .cards-grid-2 h3 {
-    font-size: 1rem;
-  }
 }
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 2.3rem;
+    font-size: 2rem;
   }
   .cards__grid,
   .cards-grid-2 {
@@ -79,7 +70,7 @@
 
   .cards__grid h3,
   .cards-grid-2 h3 {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 
   .text-card {
