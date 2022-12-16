@@ -28,9 +28,30 @@
   margin-right: 0.6rem;
 }
 
+.hidden-social-icons {
+  display: none;
+}
+
 @media (max-width: 600px) {
   .footer {
     padding: 2em;
     margin-top: 3em;
+  }
+
+  .footer h3 {
+    font-size: 1rem;
+  }
+  .footer a {
+    font-size: 0.8rem;
+  }
+  .social-icons {
+    display: none;
+  }
+
+  .hidden-social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 2rem;
   }
 }

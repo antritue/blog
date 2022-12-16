@@ -18,7 +18,7 @@ export const LATEST_POSTS_BY_CATEGORY = gql`
   query LatestPost($slug: String) {
     posts(
       orderBy: createdAt_DESC
-      first: 6
+      first: 5
       stage: PUBLISHED
       where: { category: { slug: $slug } }
     ) {
