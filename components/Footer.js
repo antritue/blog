@@ -21,13 +21,13 @@ const Footer = () => {
         </section>
         <section className='page-info-section'>
           <h3 className='footer-title'>Khám phá</h3>
-          {category.map((item) => (
-            <>
+          {category.map((item, index) => (
+            <div key={index}>
               <Link href={`/categories/${item.slug}`} key={item.slug}>
                 <a className='link footer__link '>{item.name}</a>
               </Link>
               <br></br>
-            </>
+            </div>
           ))}
         </section>
         <section className='page-info-section social-icons'>

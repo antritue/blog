@@ -63,11 +63,6 @@
     grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
   }
 
-  .cards__grid .img-card,
-  .cards-grid-2 .img-card {
-    height: 7em;
-  }
-
   .cards__grid h3,
   .cards-grid-2 h3 {
     font-size: 1rem;
