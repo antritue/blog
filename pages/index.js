@@ -7,6 +7,7 @@ import CardContainer from '../components/CardContainer';
 import Slide from '../components/Slide';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import thumbnail from '../public/thumbnail.jpg'
 
 import {
   LATEST_POSTS,
@@ -51,6 +52,7 @@ export default function Home({ latestPosts, latestPostsByCategory }) {
         title='Kim Ngân - Người lớn tập sự'
         description='Nơi chia sẻ về hai thứ mình yêu thích nhất, sáng tạo nội dung và chăm sóc bản thân. Cuộc sống tuổi 25 có gì vui'
         url={process.env.NEXT_PUBLIC_URL}
+        thumbnail={thumbnail.src}
       />
 
       <div id='top' className={`${themeName} app`}>
