@@ -7,13 +7,15 @@ import Header from '../../components/Header';
 import BlogCard from '../../components/BlogCard';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
+import MetaTags from '../../components/MetaTags';
+
+import thumbnail from '../../public/thumbnail.jpg'
 
 import {
   POSTS_IN_CATEGORY,
   CATEGORIES,
   CATEGORY,
 } from '../../utils/graphqlRequest';
-import MetaTags from '../../components/MetaTags';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -89,6 +91,8 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
         title={categoryInfo.name}
         description={categoryInfo.description}
         url={`${process.env.NEXT_PUBLIC_URL}categories/${categoryInfo.slug}`}
+        thumbnail={thumbnail.src}
+        alt={categoryInfo.description}
       />
 
       <div id='top' className={`${themeName} app`}>

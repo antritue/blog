@@ -7,6 +7,8 @@ import CardContainer from '../components/CardContainer';
 import Slide from '../components/Slide';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
+import MetaTags from '../components/MetaTags';
+
 import thumbnail from '../public/thumbnail.jpg'
 
 import {
@@ -14,7 +16,6 @@ import {
   LATEST_POSTS_BY_CATEGORY,
   CATEGORIES,
 } from '../utils/graphqlRequest';
-import MetaTags from '../components/MetaTags';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -53,6 +54,7 @@ export default function Home({ latestPosts, latestPostsByCategory }) {
         description='Nơi chia sẻ về hai thứ mình yêu thích nhất, sáng tạo nội dung và chăm sóc bản thân. Cuộc sống tuổi 25 có gì vui'
         url={process.env.NEXT_PUBLIC_URL}
         thumbnail={thumbnail.src}
+        alt='Làm người lớn có gì vui?'
       />
 
       <div id='top' className={`${themeName} app`}>

@@ -8,9 +8,9 @@ import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
+import MetaTags from '../../components/MetaTags';
 
 import { SLUGS, POST_DETAIL } from '../../utils/graphqlRequest';
-import MetaTags from '../../components/MetaTags';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -49,6 +49,7 @@ export default function BlogPost({ post }) {
         keywords={post.keywords}
         url={`${process.env.NEXT_PUBLIC_URL}posts/${post.slug}`}
         thumbnail={post.coverPhoto.url}
+        alt={post.alt}
       />
       <div id='top' className={`${themeName} app`}>
         <Header />

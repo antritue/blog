@@ -5,9 +5,10 @@ import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
+import MetaTags from '../../components/MetaTags';
 
 import { AUTHOR } from '../../utils/graphqlRequest';
-import MetaTags from '../../components/MetaTags';
+import thumbnail from '../../public/thumbnail.jpg'
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -31,6 +32,8 @@ export default function BlogPost({ author }) {
         title={author.title}
         description={author.description}
         url={`${process.env.NEXT_PUBLIC_URL}author`}
+        thumbnail={thumbnail.src}
+        alt='Làm người lớn có gì vui?'
       />
       <div id='top' className={`${themeName} app`}>
         <Header />
