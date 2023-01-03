@@ -9,11 +9,13 @@ import '../styles/footer.css';
 import '../styles/scroll.css';
 import '../styles/slug.css';
 import '../styles/slide.css';
+import GAScript from '../components/GAScript';
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider>
       <CategoryProvider>
+        <GAScript />
         <Component {...pageProps} />
       </CategoryProvider>
     </ThemeProvider>

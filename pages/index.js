@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import Head from 'next/head';
 import { ThemeContext } from '../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
 
@@ -8,13 +7,13 @@ import CardContainer from '../components/CardContainer';
 import Slide from '../components/Slide';
 import Footer from '../components/Footer';
 import ScrollToTop from '../components/ScrollToTop';
-import GAScript from '../components/GAScript';
 
 import {
   LATEST_POSTS,
   LATEST_POSTS_BY_CATEGORY,
   CATEGORIES,
 } from '../utils/graphqlRequest';
+import MetaTags from '../components/MetaTags';
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -48,15 +47,12 @@ export default function Home({ latestPosts, latestPostsByCategory }) {
 
   return (
     <>
-      <Head>
-        <title>Kim Ngân</title>
-        <meta
-          name='description'
-          content='Nơi chia sẻ về hai thứ mình yêu thích nhất, sáng tạo nội dung và chăm sóc bản thân. Cuộc sống tuổi 25 có gì vui?'
-        />
-      </Head>
+      <MetaTags
+        title='Kim Ngân - Người lớn tập sự'
+        description='Nơi chia sẻ về hai thứ mình yêu thích nhất, sáng tạo nội dung và chăm sóc bản thân. Cuộc sống tuổi 25 có gì vui'
+        url={process.env.NEXT_PUBLIC_URL}
+      />
 
-      <GAScript />
       <div id='top' className={`${themeName} app`}>
         <Header />
         {/* <Introduction src='/blog-cover.jpg' /> */}
