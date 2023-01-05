@@ -32,6 +32,16 @@ const CardContainer = ({ posts, title, path }) => {
           />
         ))}
       </article>
+
+      <Link href={`/categories/${path}`}>
+        <a>
+          <div className='load-more'>
+            <button type='button' className='btn btn--outline'>
+              Xem thêm
+            </button>
+          </div>
+        </a>
+      </Link>
     </section>
   );
 };
