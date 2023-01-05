@@ -1,15 +1,15 @@
 import { useContext, useState, useEffect } from 'react';
 import { ThemeContext } from '../../contexts/theme';
 import { GraphQLClient } from 'graphql-request';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 
 import Header from '../../components/Header';
-import Introduction from '../../components/Introduction';
 import BlogCard from '../../components/BlogCard';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
-import GAScript from '../../components/GAScript';
+import MetaTags from '../../components/MetaTags';
+
+import thumbnail from '../../public/thumbnail.jpg'
 
 import {
   POSTS_IN_CATEGORY,
@@ -87,15 +87,16 @@ export default function BlogsInCategory({ categoryInfo, edges, pageInfo }) {
 
   return (
     <>
-      <Head>
-        <title>{categoryInfo.name}</title>
-        <meta name='description' content={categoryInfo.description} />
-      </Head>
-      <GAScript />
+      <MetaTags
+        title={categoryInfo.name}
+        description={categoryInfo.description}
+        url={`${process.env.NEXT_PUBLIC_URL}categories/${categoryInfo.slug}`}
+        thumbnail={thumbnail.src}
+        alt={categoryInfo.description}
+      />
 
       <div id='top' className={`${themeName} app`}>
         <Header />
-        {/* <Introduction src='/blog-cover.jpg' /> */}
 
         <main>
           <section className='intro-title'>

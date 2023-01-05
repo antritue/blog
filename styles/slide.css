@@ -59,9 +59,6 @@ button.rec-dot:focus {
 }
 
 @media (max-width: 600px) {
-  .slide .img-card {
-    height: 7rem;
-  }
   .slide h3 {
     font-size: 0.9rem;
   }

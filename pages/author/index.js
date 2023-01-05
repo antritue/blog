@@ -1,16 +1,14 @@
 import { GraphQLClient } from 'graphql-request';
 import { useContext } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
 
 import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
-import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
-import GAScript from '../../components/GAScript';
+import MetaTags from '../../components/MetaTags';
 
 import { AUTHOR } from '../../utils/graphqlRequest';
+import thumbnail from '../../public/thumbnail.jpg'
 
 const graphClient = new GraphQLClient(process.env.NEXT_PUBLIC_GRAPHQL_API);
 
@@ -30,14 +28,15 @@ export default function BlogPost({ author }) {
 
   return (
     <>
-      <Head>
-        <title>{author.title}</title>
-        <meta name='description' content={author.description} />
-      </Head>
-      <GAScript />
+      <MetaTags
+        title={author.title}
+        description={author.description}
+        url={`${process.env.NEXT_PUBLIC_URL}author`}
+        thumbnail={thumbnail.src}
+        alt='Làm người lớn có gì vui?'
+      />
       <div id='top' className={`${themeName} app`}>
         <Header />
-        {/* <Introduction src={author.coverPhoto.url} /> */}
 
         <main className='content'>
           <h1>{author.title}</h1>

@@ -1,6 +1,5 @@
 import { GraphQLClient } from 'graphql-request';
 import { useContext } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
 import dayjs from 'dayjs';
 
@@ -9,7 +8,7 @@ import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
 import ScrollToTop from '../../components/ScrollToTop';
-import GAScript from '../../components/GAScript';
+import MetaTags from '../../components/MetaTags';
 
 import { SLUGS, POST_DETAIL } from '../../utils/graphqlRequest';
 
@@ -44,12 +43,14 @@ export default function BlogPost({ post }) {
 
   return (
     <>
-      <Head>
-        <title>{post.title}</title>
-        <meta name='description' content={post.description} />
-        <meta name='keywords' content={post.keywords} />
-      </Head>
-      <GAScript />
+      <MetaTags
+        title={post.title}
+        description={post.description}
+        keywords={post.keywords}
+        url={`${process.env.NEXT_PUBLIC_URL}posts/${post.slug}`}
+        thumbnail={post.coverPhoto.url}
+        alt={post.alt}
+      />
       <div id='top' className={`${themeName} app`}>
         <Header />
         {post.coverPhoto.url ? (
