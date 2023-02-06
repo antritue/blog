@@ -6,7 +6,6 @@ import Header from '../components/Header';
 import CardContainer from '../components/CardContainer';
 import Slide from '../components/Slide';
 import Footer from '../components/Footer';
-import ScrollToTop from '../components/ScrollToTop';
 import MetaTags from '../components/MetaTags';
 
 import thumbnail from '../public/thumbnail.jpg'
@@ -78,7 +77,6 @@ export default function Home({ latestPosts, latestPostsByCategory }) {
           ))}
         </main>
 
-        <ScrollToTop />
         <Footer />
       </div>
     </>

@@ -4,7 +4,6 @@ import { useContext } from 'react';
 import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import ScrollToTop from '../../components/ScrollToTop';
 import MetaTags from '../../components/MetaTags';
 
 import { AUTHOR } from '../../utils/graphqlRequest';
@@ -45,7 +44,6 @@ export default function BlogPost({ author }) {
           ></article>
         </main>
 
-        <ScrollToTop />
         <Footer />
       </div>
     </>
