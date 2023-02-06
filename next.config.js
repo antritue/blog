@@ -8,11 +8,7 @@ const nextConfig = {
   i18n: {
     locales: ['vi'],
     defaultLocale: 'vi',
-  },
-  experimental: {
-    // Defaults to 50MB
-    isrMemoryCacheSize: 0,
-  },
+  }
 };
 
 module.exports = nextConfig;
