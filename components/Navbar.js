@@ -3,10 +3,7 @@ import { ThemeContext } from '../contexts/theme';
 import { CategoryContext } from '../contexts/categories';
 import Link from 'next/link';
 
-import Brightness2Icon from '@mui/icons-material/Brightness2';
-import LightModeIcon from '@mui/icons-material/LightMode';
-import MenuIcon from '@mui/icons-material/Menu';
-import CloseIcon from '@mui/icons-material/Close';
+import { FaSun, FaMoon, FaBars, FaRegWindowClose } from "react-icons/fa";
 
 const Navbar = () => {
   const [{ themeName, toggleTheme }] = useContext(ThemeContext);
@@ -45,7 +42,7 @@ const Navbar = () => {
         className='btn btn--icon nav__theme'
         aria-label='toggle theme'
       >
-        {themeName === 'dark' ? <LightModeIcon /> : <Brightness2Icon />}
+        {themeName === 'dark' ? <FaSun size={20}/> : <FaMoon size={20}/>}
       </button>
 
       <button
@@ -54,7 +51,7 @@ const Navbar = () => {
         className='btn btn--icon nav__hamburger'
         aria-label='toggle navigation'
       >
-        {showNavList ? <CloseIcon /> : <MenuIcon />}
+        {showNavList ? <FaRegWindowClose size={20}/> : <FaBars size={20}/>}
       </button>
     </nav>
   );

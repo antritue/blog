@@ -1,9 +1,6 @@
 import Link from 'next/link';
 import { useContext } from 'react';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import YouTubeIcon from '@mui/icons-material/YouTube';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import EmailIcon from '@mui/icons-material/Email';
+import { FaInstagram, FaYoutube, FaLinkedin, FaEnvelope, FaTiktok } from "react-icons/fa";
 
 import { CategoryContext } from '../contexts/categories';
 
@@ -38,7 +35,7 @@ const Footer = () => {
               target='_blank'
               aria-label='instagram'
             >
-              <InstagramIcon />
+              <FaInstagram size={20} />
             </a>
           </Link>
           <Link href='https://www.youtube.com/channel/UChfs541LTPg-iiDPSFV-XnQ'>
@@ -47,7 +44,7 @@ const Footer = () => {
               target='_blank'
               aria-label='youtube'
             >
-              <YouTubeIcon />
+              <FaYoutube size={20} />
             </a>
           </Link>
           <Link href='https://www.linkedin.com/in/kimngannnguyen/'>
@@ -56,7 +53,7 @@ const Footer = () => {
               target='_blank'
               aria-label='linkedin'
             >
-              <LinkedInIcon />
+              <FaLinkedin size={20} />
             </a>
           </Link>
           <Link href='mailto:nguyenkimngan245@mail.com'>
@@ -65,7 +62,16 @@ const Footer = () => {
               target='_blank'
               aria-label='email'
             >
-              <EmailIcon />
+              <FaEnvelope size={20} />
+            </a>
+          </Link>
+          <Link href='https://www.tiktok.com/@kimngann_245'>
+            <a
+              className='link footer__link social'
+              target='_blank'
+              aria-label='tiktok'
+            >
+              <FaTiktok size={20} />
             </a>
           </Link>
         </section>
@@ -77,12 +83,12 @@ const Footer = () => {
             target='_blank'
             aria-label='instagram'
           >
-            <InstagramIcon />
+            <FaInstagram size={20} />
           </a>
         </Link>
         <Link href='https://www.youtube.com/channel/UChfs541LTPg-iiDPSFV-XnQ'>
           <a className='link footer__link' target='_blank' aria-label='youtube'>
-            <YouTubeIcon />
+            <FaYoutube size={20} />
           </a>
         </Link>
         <Link href='https://www.linkedin.com/in/kimngannnguyen/'>
@@ -91,12 +97,17 @@ const Footer = () => {
             target='_blank'
             aria-label='linkedin'
           >
-            <LinkedInIcon />
+            <FaLinkedin size={20} />
           </a>
         </Link>
         <Link href='mailto:nguyenkimngan245@mail.com'>
           <a className='link footer__link' target='_blank' aria-label='email'>
-            <EmailIcon />
+            <FaEnvelope size={20} />
+          </a>
+        </Link>
+        <Link href='https://www.tiktok.com/@kimngann_245'>
+          <a className='link footer__link' target='_blank' aria-label='tiktok'>
+            <FaTiktok size={20} />
           </a>
         </Link>
       </section>

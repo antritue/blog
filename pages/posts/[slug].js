@@ -7,7 +7,6 @@ import { ThemeContext } from '../../contexts/theme';
 import Header from '../../components/Header';
 import Introduction from '../../components/Introduction';
 import Footer from '../../components/Footer';
-import ScrollToTop from '../../components/ScrollToTop';
 import MetaTags from '../../components/MetaTags';
 
 import { SLUGS, POST_DETAIL } from '../../utils/graphqlRequest';
@@ -83,7 +82,6 @@ export default function BlogPost({ post }) {
           </section>
         </main>
 
-        <ScrollToTop />
         <Footer />
       </div>
     </>
